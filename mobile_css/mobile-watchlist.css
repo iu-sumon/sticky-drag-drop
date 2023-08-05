@@ -1,0 +1,372 @@
+ /*------------------- drawer-style added by sumon-----------------*/
+ :root
+ {
+    --watchlist-mobile-row-first-column-sub-title:#495057;
+ }
+
+ [data-theme="dark"]
+ {
+    --watchlist-mobile-row-first-column-sub-title:rgb(255, 255, 255, 0.7);
+ }
+.navbar-header
+{
+    background-color: var(--navbar-header-bg) !important;
+    color: var(--navbar-header-color) !important;
+    padding: 0px !important;
+    font-size: 1rem;   
+}
+.navbar-drawer-btn
+{
+    font-size: 1.4rem;
+}
+#side-drawer {
+    height:100vh;
+    width: 250px;   
+    top: 0;
+    left: -800px;
+    z-index: 1032; 
+    transition: left 0.25s ease;
+}
+
+#side-drawer-void {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 1031;  
+    background: var(--side-drawer-void-bg);
+}
+
+.side-drawer-body
+{
+    background-color:#2b2d2e;
+    color: #fff;
+}
+.mobile-watchlist-drawer-topbar
+{
+    background-color: #050412;
+    padding: 5px;
+}
+.watch-list
+{
+     background-color: var(--watch-list-bg) ;
+     border-left: 10px solid var(--watch-list-border-left);
+      
+}
+
+.all_watchlists
+{
+    height: 614px;
+    overflow: scroll;
+    list-style: none;
+}
+
+.drawer-footer
+{
+    background-color: #050412;
+    height: 60px;
+    
+}
+
+.drawer-close-btn
+{
+    color: white;
+    font-size: 1.4rem; 
+    margin-right: 30px;
+}
+
+.drawer-footer-btn
+{
+    font-size: 1.4rem; 
+}
+
+/* ---------------DropDown style added by sumon ---------------------*/
+.jss4203 {
+    width: 100%;
+    height: calc(100% - 30px);
+}
+.jss3964-watchlist-mobile {
+    color: rgba(9,19,44,0.7); 
+    border-bottom: 0.5px solid #363636;
+}
+
+.jss3964-watchlist-mobile>div {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.watchlist-table-row-style {
+    color: var(--watchlist-table-row-style-color);
+    position: relative;
+    font-size: 1rem; 
+    padding-bottom: 5px;
+}
+
+.watchlist-table-row-style:after {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    /* border-bottom: 0.5px solid #E7EAEF; */
+    border-bottom: 0.5px solid var(--watchlist-table-row-style-after-border-bottom);
+    /* Changed by Ashna on 10/05/2022 */
+    pointer-events: none;
+}
+.jss222:after {
+    border-bottom-width: 0.5px;
+}
+.table-first-column {
+    flex: 1 0 0;
+    text-align: left;
+}
+.table-first-column-icons
+{
+    display: flex;
+    margin-left: 0px;
+}
+
+#img-up {
+    display: inline-flex;
+    flex-direction: column; 
+}
+
+#myspan {
+    display: inline-block;
+    vertical-align: middle;
+} 
+
+.list {
+    cursor: pointer;
+    padding: 0px 0px;
+}
+/* watchlist for mobile css start */
+
+.watchlist-mobile-table-row-style {
+    color: var(--watchlist-table-row-style-color);
+    display: flex;
+    position: relative;
+    font-size: 12px;
+    min-height: 30px;
+    padding-top: 3px;
+    padding-bottom: 10px;
+}
+
+.watchlist-mobile-table-row-style:after {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    /* border-bottom: 0.5px solid #E7EAEF; */
+    border-bottom: 0.5px solid #363636;
+    /* Changed by Ashna on 10/05/2022 */
+    pointer-events: none;
+}
+
+#img-up-mobile {
+    display: inline-flex;
+    flex-direction: column;
+    margin-top: 105px;
+}
+
+.watchlist-mobile-table-end-column {
+    flex: 88px 0 0;
+    text-align: right;
+    margin-top: 0.2rem;
+}
+
+.watchlist-mobile-row-title {
+    width: 100%;
+    /* overflow: hidden; */
+    white-space: nowrap;
+    /* margin-bottom: 4px; */
+    text-overflow: ellipsis;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.watchlist-mobile-row-company-title {
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: bolder;
+    font-size: .85rem;
+    color: var(--watchlist-mobile-row-company-title);
+}
+.watchlist-mobile-first-column-sub-value
+{
+    color: var(--watchlist-mobile-row-company-title);
+}
+
+.negative-mobile {
+    height: 22px;
+    width: 10px;
+    background-color: var(--red-color-bg);
+    border-radius: 5px;
+    padding-right: 3px;
+    padding-bottom: 5px;
+    padding-top: 3px;
+}
+
+.positive-mobile {
+    height: 22px;
+    width: 10px!important;
+    background-color: var(--green-color-bg);
+    border-radius: 5px;
+    padding-right: 3px;
+    padding-bottom: 5px;
+    padding-top: 3px;
+}
+
+.no-change-mobile {
+    height: 22px;
+    width: 10px;
+    background-color: #8e9291;
+    border-radius: 5px;
+    padding-right: 3px;
+    padding-bottom: 5px;
+    padding-top: 3px;
+}
+
+.watchlist-mobile-row-sub-title {
+    color:dfdfdf;
+    font-size: .7rem;
+    position: relative;
+    margin-left:auto; 
+    right:0;
+    margin-top: 6px;
+
+}
+
+.watchlist-mobile-row-second-column-sub-title {
+    color: var(--watchlist-mobile-row-second-column-sub-title-color);
+    font-size: 1.5rem;
+    position: relative;
+    top: 20px;
+    right: 198px;
+}
+.watchlist-row-content-align {
+    display: flex;
+    /* padding: 10px 0; */
+    line-height: 1;
+    flex-wrap: wrap
+}
+
+.watchlist-mobile-row-first-column-sub-title {
+    color: var(--watchlist-mobile-row-first-column-sub-title);
+    font-size: .7rem;
+    position: relative;
+}
+  
+.arrow-down {
+    font-size: 30px;
+    color: var(--arrow-down-color);
+    position: absolute;
+    left: 40px;
+    top: 42px;
+}
+
+.img-mobile {
+    font-size: 30px;
+    color: var(--img-mobile-color);
+    padding-left: 10px;
+}
+
+#imageUpMobile,
+#imageDownMobile {
+    height: 6px;
+    width: 25px;
+    font-size: .7rem;
+}
+
+.watchlist-modal-content {
+    width: 60% !important;
+    margin: 0 auto;
+    height: 50vh;
+    margin-top: 130px;
+    z-index: 10;
+    border-radius: 1.3rem;
+    background-color: #524f4f;
+}
+  .watchlist-modal-body, .watchlist-modal-title
+  {
+    font-size: 1.2rem;
+    color:  white;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .watchlist-modal-body li
+  {
+    padding: 11px 0px; 
+    border-bottom: 0.55px solid rgb(155, 154, 154);
+    list-style: none;
+    font-size: .8rem;
+  } 
+
+  .watchlist-modal-body ul
+  {
+    padding: 0px !important;
+  }
+
+  .watchlist-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 4rem;
+    border-bottom: 10px solid #00a6ff;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+}
+
+.watchlist-info-icon {
+    font-size: 1rem;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+.row-content-end {
+    align-items: flex-end;
+}
+/* watchlist for mobile css end */
+.mobile-table-first-column-titles
+{
+    font-size: .7rem;
+}
+
+.mobile-table-first-end-column-titles
+{
+    font-size: .7rem;
+}
+
+#dom-watchlist
+{
+    padding-bottom: 30px;
+}
+
+.checkbox[type=checkbox] {
+    border-radius: 5px;
+    color: transparent !important;
+
+}
+.mobile_watchlist_li {
+    border-bottom: 0.5px solid #363636;
+}
+
+.mobile-watch-add-btn
+{
+    color: var(--mobile-stock-btns-sm);
+    border: 0.5px solid #266cd8;
+    border-radius: 15px!important;
+    padding: 5px 20px;
+}
+
+.mobile-watch-del-btn
+{
+    
+    color: var(--mobile-stock-btns-sm);
+    border: 0.5px solid red;
+    border-radius: 15px!important;
+    padding: 5px 20px;
+}

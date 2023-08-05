@@ -1,0 +1,52 @@
+.mobile-global-search-bar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 8px 20px;
+}
+.mobile-global-input-icons {
+    width: 100%;
+    position: relative;
+}
+.mobile-global-input-icons i {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 20px;
+}
+.mobile-global-input-field {
+    width: 100%;
+    height: 50px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 7px;
+    z-index: 2;
+    background: var(--select-bg);
+    border: 1px solid var(--profile-card-border-color);
+    color: var(--font-color);
+}
+:focus {
+    outline: none
+}
+
+/* .mobile-global-resultBox{
+    padding: 0;
+    height: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: var(--select-bg);
+    border: 1px solid var(--profile-card-border-color);
+    color: var(--font-color);
+  } */
+
+  .mobile-global-resultBox li{
+    list-style: none;
+    padding: 14px 12px;
+    display: block;
+    width: 100%;
+    cursor: default;
+    border-radius: 3px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--watchlist-table-row-style);
+  }

@@ -1,0 +1,3309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/mobile_css/ico.css" />
+    <link rel="stylesheet" href="/mobile_css/mobile-custom-style.css" />
+    <link rel="stylesheet" href="/mobile_css/mobile-stock-info.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      .modal-remove-footer,
+      .modal-add-footer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        bottom: 53px;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        width: 100%;
+        background-color: var(--ongoing-title-bg);
+        padding: 15px;
+        color: var(--ongoing-title-color);
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .stock-fa-start {
+        color: var(--nav-active-color);
+      }
+      .search-container {
+    position: absolute;
+    bottom: 70rem;
+    right: 1rem;
+    z-index: 9999;
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    overflow: hidden;
+    background: linear-gradient(to left,#26d6e6,#67efb8);
+}
+.mobile-global-search-box {
+  padding-top: 10px;
+  padding-right: 5px;
+  width: 60px;
+  height: 48px;
+  border-radius: 50%;
+  margin: 0 0 0 0;
+  cursor: pointer;
+  text-align: center;
+  color: black;
+  overflow: hidden;
+}
+.search-parent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.search-container:active {
+  background: #c32424;
+}
+    </style>
+  </head>
+  <body>
+     <!-- header -->
+    <div id="stock-info_first_container">
+      <div
+        id="mobile-stock-info-top-header"
+        class="mobile-stock-info-top-header-container"
+      >
+        <div class="mobile-stock-info-header">
+          <div class="d-flex align-items-center">
+            <span id="backToHomepage"
+              ><i class="fa fa-chevron-left fa-2x" aria-hidden="true"></i
+            ></span>
+            <span data-symbol="1JANATAMF.PUBLIC" id="companyTitle" class="ml-1"
+              >1JANATAMF [A]</span
+            >
+          </div>
+          <div class="icon-container">
+            <span
+              onclick="return  openmodal_start_list(`1JANATAMF.PUBLIC`);"
+              id="favorite-icon"
+              class="inner"
+              ><i class="fa fa-star stock-fa-start" aria-hidden="true"></i
+            ></span>
+            <span id="bell-icon" class="inner"
+              ><i class="fa fa-bell-o" aria-hidden="true"></i
+            ></span>
+          </div>
+        </div>
+        <div class="quote_full">FIRST JANATA BANK MUTUAL FUND</div>
+        <div class="row mt-2">
+          <div class="col-5">
+            <div class="highlight-box">
+              <div class="highlight-title-box clearfix">
+                <div class="highlight-title false"></div>
+              </div>
+              <div class="highlight-counter">
+                <div class="highlight-counter-style green false">
+                  <div class="price">
+                    <span class="quote_price 1JANATAMFPUBLIC_ltp neutral"
+                      >7.3</span
+                    >
+                  </div>
+                  <div class="changePrice">
+                    <span class="ratio mb-1"
+                      ><span class="quote_change 1JANATAMFPUBLIC_chg neutral"
+                        >0</span
+                      ></span
+                    >
+                    <span class="ratio"
+                      ><span
+                        class="quote_changeper 1JANATAMFPUBLIC_chgper neutral"
+                        >0%</span
+                      ></span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-2 arrow-icon">
+            <div>
+              <i
+                class="fa fa-angle-double-down fa-1x stock-info-icon-up-down"
+              ></i>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="highlight-second-chlid">
+              <div class="highlight-subtitle buysellbtn">
+                <button
+                  onclick="placeorder('1JANATAMF.PUBLIC','BUY')"
+                  class="parallelogram1 column-title-left"
+                >
+                  BUY
+                </button>
+                <button
+                  onclick="placeorder('1JANATAMF.PUBLIC','SELL')"
+                  class="parallelogram2 column-value-right"
+                >
+                  SELL
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- slider -->
+    <div id="slide-container" class="slide mobile-stock-info-col-pad" style="direction: ltr">
+      <li class="li-side" style="">
+        <span
+          ><i class="fa fa-volume-up icon-alert" aria-hidden="true"></i
+        ></span>
+        <span class="news-text">
+          On the close of operation on July 13, 2023, the Fund has reported
+          Net Asset Value (NAV) of Tk. 9.87 per unit on the basis of current
+          market price and Tk. 11.17 per unit on the basis of cost price
+          against face value of Tk. 10.00 whereas total Net Assets of the
+          Fund stood at Tk. 2,861,514,582.00 on the basis of current market
+          price and Tk. 3,238,784,624.00 on the basis of cost price after
+          considering all assets and liabilities of the Fund.
+        </span>
+        <span><i class="fa-solid fa-xmark"></i></span>
+      </li>
+      <li class="li-side" style="display: none">
+        <span
+          ><i class="fa fa-volume-up icon-alert" aria-hidden="true"></i
+        ></span>
+        <span class="news-text">
+          On the close of operation on July 06, 2023, the Fund has reported
+          Net Asset Value (NAV) of Tk. 9.87 per unit on the basis of current
+          market price and Tk. 11.17 per unit on the basis of cost price
+          against face value of Tk. 10.00 whereas total Net Assets of the
+          Fund stood at Tk. 2,861,499,357.00 on the basis of current market
+          price and Tk. 3,238,861,470.00 on the basis of cost price after
+          considering all assets and liabilities of the Fund.
+        </span>
+        <span><i class="fa-solid fa-xmark"></i></span>
+      </li>
+      <li class="li-side" style="display: none">
+        <span
+          ><i class="fa fa-volume-up icon-alert" aria-hidden="true"></i
+        ></span>
+        <span class="news-text">
+          On the close of operation on June 26, 2023, the Fund has reported
+          Net Asset Value (NAV) of Tk. 9.88 per unit on the basis of current
+          market price and Tk. 11.18 per unit on the basis of cost price
+          against face value of Tk. 10.00 whereas total Net Assets of the
+          Fund stood at Tk. 2,865,631,953.00 on the basis of current market
+          price and Tk. 3,241,060,665.00 on the basis of cost price after
+          considering all assets and liabilities of the Fund.
+        </span>
+        <span><i class="fa-solid fa-xmark"></i></span>
+      </li>
+    </div>
+     <!-- table -->
+    <div id="full-details" class="mobile-stock-info-col-pad">
+        <div class="row col-pad">
+          <div class="col highlight-column-name">
+            OPEN
+            <div class="highlight-column-value">
+              <span class="quote_open 1JANATAMFPUBLIC_open neutral">7.4</span>
+            </div>
+          </div>
+          <div class="col highlight-column-name">
+            HIGH
+            <div class="highlight-column-value">
+              <span class="quote_high 1JANATAMFPUBLIC_high">7.6</span>
+            </div>
+          </div>
+          <div class="col highlight-column-name">
+            LOW
+            <div class="highlight-column-value">
+              <span class="quote_low 1JANATAMFPUBLIC_low">7.3</span>
+            </div>
+          </div>
+          <div class="col highlight-column-name">
+            YCP
+            <div class="highlight-column-value">
+              <span class="quote_prevclose 1JANATAMFPUBLIC_ycp">7.4</span>
+            </div>
+          </div>
+          <div class="col highlight-last-column-name">
+            TURNOVER
+            <div class="highlight-column-value">
+              <span class="quote_value 1JANATAMFPUBLIC_turnover">0</span>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3 col-pad">
+          <div class="col highlight-column-name">
+            UP LIMIT
+            <div class="highlight-column-value">
+              <span class="quote_circuit_up">8.14</span>
+            </div>
+          </div>
+          <div class="col highlight-column-name">
+            DOWN LIMIT
+            <div class="highlight-column-value">
+              <span class="quote_circuit_down">6.66</span>
+            </div>
+          </div>
+          <div class="col highlight-column-name">
+            FLOOR
+            <div id="floor_data" class="highlight-column-value">6.1</div>
+          </div>
+          <div class="col highlight-column-name">
+            52W H/L
+            <div id="whl52" class="highlight-column-value">6.5/6.1</div>
+          </div>
+          <div class="col highlight-last-column-name">
+            VOLUME
+            <div class="highlight-column-value">
+              <span class="quote_volume 1JANATAMFPUBLIC_vol">3218</span>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3 col-pad">
+          <div class="col highlight-column-name">
+            PE
+            <div id="p_e" class="highlight-column-value">-</div>
+          </div>
+          <div class="col highlight-column-name">
+            RESERVE
+            <div id="reserve" class="highlight-column-value">7.10cr</div>
+          </div>
+          <div class="col highlight-column-name">
+            NAV
+            <div id="nav" class="highlight-column-value">10.80</div>
+          </div>
+          <div class="col highlight-column-name">
+            DIV.YIELD
+            <div id="dividend_yield" class="highlight-column-value">
+              10.94
+            </div>
+          </div>
+          <div class="col highlight-last-column-name">
+            YEAR.END
+            <div id="year_end" class="highlight-column-value">30-Jun</div>
+          </div>
+        </div>
+        <div class="row mt-3 mb-1 col-pad">
+          <div class="col highlight-column-name">
+            FREE FLOAT
+            <div id="free_float" class="highlight-column-value">21.74cr</div>
+          </div>
+          <div class="col highlight-column-name">
+            TOT. SHARE
+            <div id="total_share" class="highlight-column-value">28.99cr</div>
+          </div>
+          <div class="col highlight-column-name">
+            MRKT.CAP
+            <div id="market_cap" class="highlight-column-value">176.85cr</div>
+          </div>
+          <div class="col highlight-column-name">
+            PAIDUP
+            <div id="paid_up_capital" class="highlight-column-value">
+              289.92cr
+            </div>
+          </div>
+          <div class="col highlight-last-column-name">
+            AUTRIZED
+            <div id="authorized_capital" class="highlight-column-value">
+              -cr
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3 mb-1 col-pad">
+          <table class="highlights-data-table">
+            <tbody>
+              <tr>
+                <td class="highlight-column-name">Q1</td>
+                <td class="highlight-column-name">Q2</td>
+                <td class="highlight-column-name">Q3</td>
+                <td class="highlight-column-name">EPS(TTM)</td>
+                <td class="highlight-column-name">LAST.DIV</td>
+              </tr>
+              <tr>
+                <td>
+                  <span class="q1_latest down">-0.23</span>
+                  <span
+                    id="q1_latest_diff"
+                    class="of_number_to_be_evaluated small-font red"
+                    >(-0.43)</span
+                  >
+                </td>
+                <td>
+                  <span class="q2_latest down">-0.28</span>
+                  <span
+                    id="q2_latest_diff"
+                    class="of_number_to_be_evaluated small-font red"
+                    >(-0.47)</span
+                  >
+                </td>
+                <td>
+                  <span class="q3_latest down">-0.05</span>
+                  <span
+                    id="q3_latest_diff"
+                    class="of_number_to_be_evaluated small-font red"
+                    >(-0.06)</span
+                  >
+                </td>
+                <td>
+                  <span class="eps_annual_ttm down">-0.75</span>
+                  <span
+                    id="eps_annual_ttm_diff"
+                    class="of_number_to_be_evaluated small-font red"
+                    >(-0.99)</span
+                  >
+                </td>
+                <td class="highlight-column-value">
+                  <span id="dividend-cash">7%C</span>
+                </td>
+              </tr>
+              <tr>
+                <td id="q1_earlier" class="highlight-column-value prev">
+                  0.20
+                </td>
+                <td id="q2_earlier" class="highlight-column-value prev">
+                  0.19
+                </td>
+                <td id="q3_earlier" class="highlight-column-value prev">
+                  0.01
+                </td>
+                <td
+                  id="eps_annual_latest"
+                  class="highlight-column-value prev"
+                >
+                  0.24
+                </td>
+                <td id="dividend-stock" class="highlight-column-value prev">
+                  S
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row mt-3 col-pad">
+          <div class="highlight-subtitle">
+            Holdings [as on <span id="holding-subtitle">May 31, 2023</span>]
+          </div>
+          <table class="highlights-data-table">
+            <tbody>
+              <tr>
+                <td class="highlight-column-name">Director</td>
+                <td class="highlight-column-name">Govt.</td>
+                <td class="highlight-column-name">Institute</td>
+                <td class="highlight-column-name">Foreign</td>
+                <td class="highlight-column-name">Public</td>
+              </tr>
+              <tr>
+                <td class="highlight-column-value">
+                  <span id="sponsor_director_latest">25%</span>
+                  <span
+                    id="sponsor_director_change"
+                    class="highlight-column-value of_number_to_be_evaluated small-font"
+                    >(0.00)</span
+                  >
+                </td>
+                <td class="highlight-column-value">
+                  <span id="govt_share_latest">0%</span>
+                  <span
+                    id="govt_share_change"
+                    class="highlight-column-value of_number_to_be_evaluated small-font"
+                    >(0.00)</span
+                  >
+                </td>
+                <td class="highlight-column-value">
+                  <span id="institute_share_latest">34.94%</span>
+                  <span
+                    id="institute_share_change"
+                    class="highlight-column-value of_number_to_be_evaluated small-font red"
+                    >(-0.03)</span
+                  >
+                </td>
+                <td class="highlight-column-value">
+                  <span id="foreign_share_latest">0%</span>
+                  <span
+                    id="foreign_share_change"
+                    class="highlight-column-value of_number_to_be_evaluated small-font"
+                    >(0.00)</span
+                  >
+                </td>
+                <td class="highlight-column-value">
+                  <span
+                    id="public_share_change"
+                    class="highlight-column-value of_number_to_be_evaluated small-font green"
+                    >(+0.03)</span
+                  >
+                  <span id="public_share_latest">40.06%</span>
+                </td>
+              </tr>
+              <tr>
+                <td id="sponsor_director" class="highlight-column-value prev">
+                  25%
+                </td>
+                <td id="govt_share" class="highlight-column-value prev">
+                  0%
+                </td>
+                <td id="institute_share" class="highlight-column-value prev">
+                  34.97%
+                </td>
+                <td id="foreign_share" class="highlight-column-value prev">
+                  0%
+                </td>
+                <td id="public_share" class="highlight-column-value prev">
+                  40.03%
+                </td>
+              </tr>
+              <tr>
+                <td
+                  id="director_share_percentage"
+                  class="highlight-column-value small-font"
+                >
+                  7.25cr
+                </td>
+                <td
+                  id="govt_share_percentage"
+                  class="highlight-column-value small-font"
+                >
+                  0.00cr
+                </td>
+                <td
+                  id="institute_share_percentage"
+                  class="highlight-column-value small-font"
+                >
+                  10.13cr
+                </td>
+                <td
+                  id="foreign_share_percentage"
+                  class="highlight-column-value small-font"
+                >
+                  0.00cr
+                </td>
+                <td
+                  id="public_share_percentage"
+                  class="highlight-column-value"
+                  style="font-size: 8px"
+                >
+                  11.61cr
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+    <!-- time and by price table -->
+    <div class="row mt-2 mobile-stock-info-col-pad">
+      <div class="col-12">
+        <ul
+          class="nav nav-pills mb-1 nav-pots"
+          id="nav-tab1"
+          role="tablist"
+        >
+          <li class="nav-mobile-stock-info-item-round col-3">
+            <a
+              class="nav-mobile-stock-info-link active"
+              id="nav-bprice-tab"
+              data-toggle="tab"
+              href="#nav-bprice"
+              role="tab"
+              aria-controls="nav-bprice"
+              aria-selected="true"
+              >By Price</a
+            >
+          </li>
+          <li class="nav-mobile-stock-info-item-round col-3">
+            <a
+              class="nav-mobile-stock-info-link"
+              id=""
+              data-toggle="tab"
+              href=""
+              role=""
+              aria-controls=""
+              aria-selected=""
+              >By Order</a
+            >
+          </li>
+          <li class="nav-mobile-stock-info-item-round col-3">
+            <a
+              class="nav-mobile-stock-info-link"
+              id="nav-tas-tab"
+              data-toggle="tab"
+              href="#nav-tas"
+              role="tab"
+              aria-controls="nav-tas"
+              aria-selected="false"
+              >Time&amp;Sales</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="market-depth-section mobile-stock-info-col-pad">
+      <span class="bidPerQ 1JANATAMFPUBLIC_bidqper">50%</span>
+      <span
+        id="market-depth-bar"
+        class="pr-2"
+        style="
+          width: 70vw;
+          height: 30px;
+          user-select: none;
+          -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        "
+        _echarts_instance_="ec_1691084104431"
+        ><div
+          style="
+            position: relative;
+            width: 239px;
+            height: 30px;
+            padding: 0px;
+            margin: 0px;
+            border-width: 0px;
+          "
+        >
+          <canvas
+            data-zr-dom-id="zr_0"
+            width="717"
+            height="90"
+            style="
+              position: absolute;
+              left: 0px;
+              top: 0px;
+              width: 239px;
+              height: 30px;
+              user-select: none;
+              -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+              padding: 0px;
+              margin: 0px;
+              border-width: 0px;
+            "
+          ></canvas></div
+      ></span>
+      <span class="askPerQ 1JANATAMFPUBLIC_askqper">50%</span>
+    </div>
+    <div class="tab-content mobile-stock-info-col-pad" id="nav-tabContent1">
+      <div
+        class="tab-pane show active"
+        id="nav-bprice"
+        role="tabpanel"
+        aria-labelledby="nav-bprice-tab"
+      >
+        <div class="row col-pad-bidAndask">
+          <div class="bidAndask-table-parent">
+            <table class="bidAndask-data-table">
+              <thead class="bidAndask-thead">
+                <tr>
+                  <th class="bid-sl-name">SL</th>
+                  <th class="bidQ-column-name">BID Q</th>
+                  <th class="bid-column-name">BID</th>
+                  <th class="bidAndask-middle-column-name"></th>
+                  <th class="ask-column-name">ASK</th>
+                  <th class="askQ-column-name">ASK Q</th>
+                  <th class="ask-sl-name">SL</th>
+                </tr>
+              </thead>
+              <tbody class="bidAndask-tbody mktdpt_symbol_name">
+                <tr>
+                  <td class="bid-sl-value">1</td>
+                  <td class="bidQ-column-value 1JANATAMFPUBLIC_db2"></td>
+                  <td class="bid-column-value 1JANATAMFPUBLIC_db1"></td>
+                  <td
+                    id="stock-arrow-icon"
+                    class="bidAndask-middle-column-value"
+                  >
+                    <div>
+                      <i
+                        class="fa fa-angle-double-down stock-info-icon-up-down"
+                      ></i>
+                    </div>
+                  </td>
+                  <td class="ask-column-value 1JANATAMFPUBLIC_ds1"></td>
+                  <td class="askQ-column-value 1JANATAMFPUBLIC_ds2"></td>
+                  <td class="ask-sl-value">1</td>
+                </tr>
+                <tr>
+                  <td class="bid-sl-value">2</td>
+                  <td class="bidQ-column-value 1JANATAMFPUBLIC_db4"></td>
+                  <td class="bid-column-value 1JANATAMFPUBLIC_db3"></td>
+                  <td class="bidAndask-middle-column-value"></td>
+                  <td class="ask-column-value 1JANATAMFPUBLIC_ds3"></td>
+                  <td class="askQ-column-value 1JANATAMFPUBLIC_ds4"></td>
+                  <td class="ask-sl-value">2</td>
+                </tr>
+                <tr class="bidAndask-row">
+                  <td class="bid-sl-value">3</td>
+                  <td class="bidQ-column-value 1JANATAMFPUBLIC_db6"></td>
+                  <td class="bid-column-value 1JANATAMFPUBLIC_db5"></td>
+                  <td class="bidAndask-middle-column-value"></td>
+                  <td class="ask-column-value 1JANATAMFPUBLIC_ds5"></td>
+                  <td class="askQ-column-value 1JANATAMFPUBLIC_ds6"></td>
+                  <td class="ask-sl-value">3</td>
+                </tr>
+                <tr class="bidAndask-row">
+                  <td class="bid-sl-value">4</td>
+                  <td class="bidQ-column-value 1JANATAMFPUBLIC_db8"></td>
+                  <td class="bid-column-value 1JANATAMFPUBLIC_db7"></td>
+                  <td class="bidAndask-middle-column-value"></td>
+                  <td class="ask-column-value 1JANATAMFPUBLIC_ds7"></td>
+                  <td class="askQ-column-value 1JANATAMFPUBLIC_ds8"></td>
+                  <td class="ask-sl-value">4</td>
+                </tr>
+                <tr class="bidAndask-row">
+                  <td class="bid-sl-value">5</td>
+                  <td class="bidQ-column-value 1JANATAMFPUBLIC_db10"></td>
+                  <td class="bid-column-value 1JANATAMFPUBLIC_db9"></td>
+                  <td class="bidAndask-middle-column-value"></td>
+                  <td class="ask-column-value 1JANATAMFPUBLIC_ds9"></td>
+                  <td class="askQ-column-value 1JANATAMFPUBLIC_ds10"></td>
+                  <td class="ask-sl-value">5</td>
+                </tr>
+                <tr class="bidAndask-row">
+                  <td class="bid-sl-value">6</td>
+                  <td class="bidQ-column-value 1JANATAMFPUBLIC_db12"></td>
+                  <td class="bid-column-value 1JANATAMFPUBLIC_db11"></td>
+                  <td class="bidAndask-middle-column-value"></td>
+                  <td class="ask-column-value 1JANATAMFPUBLIC_ds11"></td>
+                  <td class="askQ-column-value 1JANATAMFPUBLIC_ds12"></td>
+                  <td class="ask-sl-value">6</td>
+                </tr>
+                <tr class="bidAndask-row">
+                  <td class="bid-sl-value">7</td>
+                  <td class="bidQ-column-value 1JANATAMFPUBLIC_db14"></td>
+                  <td class="bid-column-value 1JANATAMFPUBLIC_db13"></td>
+                  <td class="bidAndask-middle-column-value"></td>
+                  <td class="ask-column-value 1JANATAMFPUBLIC_ds13"></td>
+                  <td class="askQ-column-value 1JANATAMFPUBLIC_ds14"></td>
+                  <td class="ask-sl-value">7</td>
+                </tr>
+                <tr class="bidAndask-row">
+                  <td class="bid-sl-value">8</td>
+                  <td class="bidQ-column-value 1JANATAMFPUBLIC_db16"></td>
+                  <td class="bid-column-value 1JANATAMFPUBLIC_db15"></td>
+                  <td class="bidAndask-middle-column-value"></td>
+                  <td class="ask-column-value 1JANATAMFPUBLIC_ds15"></td>
+                  <td class="askQ-column-value 1JANATAMFPUBLIC_ds16"></td>
+                  <td class="ask-sl-value">8</td>
+                </tr>
+                <tr class="bidAndask-row">
+                  <td class="bid-sl-value">9</td>
+                  <td class="bidQ-column-value 1JANATAMFPUBLIC_db18"></td>
+                  <td class="bid-column-value 1JANATAMFPUBLIC_db17"></td>
+                  <td class="bidAndask-middle-column-value"></td>
+                  <td class="ask-column-value 1JANATAMFPUBLIC_ds17"></td>
+                  <td class="askQ-column-value 1JANATAMFPUBLIC_ds18"></td>
+                  <td class="ask-sl-value">9</td>
+                </tr>
+                <tr class="bidAndask-row">
+                  <td class="bid-sl-value">10</td>
+                  <td class="bidQ-column-value 1JANATAMFPUBLIC_db20"></td>
+                  <td class="bid-column-value 1JANATAMFPUBLIC_db19"></td>
+                  <td class="bidAndask-middle-column-value"></td>
+                  <td class="ask-column-value 1JANATAMFPUBLIC_ds19"></td>
+                  <td class="askQ-column-value 1JANATAMFPUBLIC_ds20"></td>
+                  <td class="ask-sl-value">10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane"
+        id="nav-tas"
+        role="tabpanel"
+        aria-labelledby="nav-tas-tab"
+      >
+        <div class="row col-pad-timesales">
+          <div class="timeAndsales-table-parent">
+            <table
+              id="timeAndsales-data-table-id"
+              class="timeAndsales-data-table"
+            >
+              <thead class="timeAndsales-thead">
+                <tr>
+                  <th class="timeAndsales-fast-column-name">Time</th>
+                  <th class="timeAndsales-buy-sell-column-name">
+                    Buy/Sell
+                  </th>
+                  <th class="timeAndsales-quantity-column-name">
+                    Quantity
+                  </th>
+                  <th class="timeAndsales-price-column-name">Price</th>
+                  <th class="timeAndsales-last-column-name">NT</th>
+                </tr>
+              </thead>
+              <tbody class="timeAndsales-tbody">
+                <tr class="text-center gridtab down">
+                  <td class="tab-border-left">16:38:17</td>
+                  <td class="tab-border-left">SELL</td>
+                  <td class="tab-border-left">100</td>
+                  <td class="tab-border-left">7.3</td>
+                  <td class="tab-border-left">Y</td>
+                </tr>
+  
+                <tr class="text-center gridtab down">
+                  <td class="tab-border-left">16:34:55</td>
+                  <td class="tab-border-left">SELL</td>
+                  <td class="tab-border-left">2</td>
+                  <td class="tab-border-left">7.3</td>
+                  <td class="tab-border-left">Y</td>
+                </tr>
+  
+                <tr class="text-center gridtab up">
+                  <td class="tab-border-left">16:34:25</td>
+                  <td class="tab-border-left">BUY</td>
+                  <td class="tab-border-left">80</td>
+                  <td class="tab-border-left">7.3</td>
+                  <td class="tab-border-left">Y</td>
+                </tr>
+  
+                <tr class="text-center gridtab up">
+                  <td class="tab-border-left">16:34:25</td>
+                  <td class="tab-border-left">BUY</td>
+                  <td class="tab-border-left">10</td>
+                  <td class="tab-border-left">7.3</td>
+                  <td class="tab-border-left">Y</td>
+                </tr>
+  
+                <tr class="text-center gridtab up">
+                  <td class="tab-border-left">16:34:25</td>
+                  <td class="tab-border-left">BUY</td>
+                  <td class="tab-border-left">120</td>
+                  <td class="tab-border-left">7.3</td>
+                  <td class="tab-border-left">Y</td>
+                </tr>
+  
+                <tr class="text-center gridtab up">
+                  <td class="tab-border-left">16:34:25</td>
+                  <td class="tab-border-left">BUY</td>
+                  <td class="tab-border-left">140</td>
+                  <td class="tab-border-left">7.3</td>
+                  <td class="tab-border-left">Y</td>
+                </tr>
+  
+                <tr class="text-center gridtab up">
+                  <td class="tab-border-left">16:34:25</td>
+                  <td class="tab-border-left">BUY</td>
+                  <td class="tab-border-left">100</td>
+                  <td class="tab-border-left">7.3</td>
+                  <td class="tab-border-left">Y</td>
+                </tr>
+  
+                <tr class="text-center gridtab up">
+                  <td class="tab-border-left">16:34:25</td>
+                  <td class="tab-border-left">BUY</td>
+                  <td class="tab-border-left">6</td>
+                  <td class="tab-border-left">7.3</td>
+                  <td class="tab-border-left">Y</td>
+                </tr>
+  
+                <tr class="text-center gridtab up">
+                  <td class="tab-border-left">16:34:25</td>
+                  <td class="tab-border-left">BUY</td>
+                  <td class="tab-border-left">100</td>
+                  <td class="tab-border-left">7.3</td>
+                  <td class="tab-border-left">Y</td>
+                </tr>
+  
+                <tr class="text-center gridtab up">
+                  <td class="tab-border-left">16:34:25</td>
+                  <td class="tab-border-left">BUY</td>
+                  <td class="tab-border-left">160</td>
+                  <td class="tab-border-left">7.3</td>
+                  <td class="tab-border-left">Y</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+    <div
+    class="nav nav-mobile-stock-info-tabs nav-sticky"
+    id="nav-tab"
+    role="tablist"
+    style="display: grid !important; grid-template-columns: repeat(5, auto)!important;"
+  >
+    <a
+      class="nav-mobile-stock-info-item nav-mobile-stock-info-link"
+      id="nav-chart-tab"
+      data-toggle="tab"
+      href="#nav-chart"
+      role="tab"
+      aria-controls="nav-chart"
+      aria-selected="false"
+      >Chart</a
+    >
+    <a
+      class="nav-mobile-stock-info-item nav-mobile-stock-info-link active show"
+      id="nav-news-tab"
+      data-toggle="tab"
+      href="#nav-news"
+      role="tab"
+      aria-controls="nav-news"
+      aria-selected="true"
+      >News</a
+    >
+    <a
+      class="nav-mobile-stock-info-item nav-mobile-stock-info-link"
+      id="nav-analysis-tab"
+      data-toggle="tab"
+      href="#nav-analysis"
+      role="tab"
+      aria-controls="nav-analysis"
+      aria-selected="false"
+      >Analysis</a
+    >
+    <a
+      class="nav-mobile-stock-info-item nav-mobile-stock-info-link"
+      id="nav-company-tab"
+      data-toggle="tab"
+      href="#nav-company"
+      role="tab"
+      aria-controls="nav-company"
+      aria-selected="false"
+      >Company</a
+    >
+    <a
+      class="nav-mobile-stock-info-item nav-mobile-stock-info-link"
+      id="nav-order-flow-tab"
+      data-toggle="tab"
+      href="#nav-order-flow"
+      role="tab"
+      aria-controls="nav-order-flow"
+      aria-selected="false"
+      >Order Flow</a
+    >
+    </div>
+    <div class="tab-content mobile-stock-info-col-pad" id="nav-tabContent">
+      <div
+        class="tab-pane fade"
+        id="nav-chart"
+        role="tabpanel"
+        aria-labelledby="nav-chart-tab"
+      >
+        <div class="row">
+          <div class="col-12">
+            <ul
+              class="nav nav-pills mb-1 nav-pots"
+              id="nav-tab2"
+              role="tablist"
+            >
+              <li class="nav-mobile-stock-info-item-round col-3">
+                <a
+                  class="nav-mobile-stock-info-link active"
+                  id="nav-minute-tab"
+                  data-toggle="tab"
+                  href="#nav-minute"
+                  role="tab"
+                  aria-controls="nav-minute"
+                  aria-selected="true"
+                  >Minute</a
+                >
+              </li>
+              <li class="nav-mobile-stock-info-item-round col-3">
+                <a class="nav-mobile-stock-info-link">Simple</a>
+              </li>
+              <li
+                class="nav-mobile-stock-info-item-round col-3"
+                id="nav-pro-tab"
+              >
+                <a class="nav-mobile-stock-info-link">Pro</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="tab-pane show active"
+          id="nav-minute"
+          role="tabpanel"
+          aria-labelledby="nav-minute-tab"
+        >
+          <div id="tv_chart_container" style="display: block">
+            <iframe
+              id="tradingview_8a160"
+              name="tradingview_8a160"
+              src="blob:https://devbroker.quantbd.com/b56fa741-a0e3-4137-9648-7aac5e33215f#symbol=1JANATAMF.PUBLIC&amp;interval=1D&amp;toolbarbg=0c0c0c&amp;widgetbar=%7B%22details%22%3Afalse%2C%22watchlist%22%3Afalse%2C%22watchlist_settings%22%3A%7B%22default_symbols%22%3A%5B%5D%7D%7D&amp;timeFrames=%5B%7B%22text%22%3A%225Y%22%2C%22resolution%22%3A%221M%22%2C%22description%22%3A%225%20Years%22%7D%2C%7B%22text%22%3A%223Y%22%2C%22resolution%22%3A%221M%22%2C%22description%22%3A%223%20Years%22%7D%2C%7B%22text%22%3A%221Y%22%2C%22resolution%22%3A%221M%22%2C%22description%22%3A%221%20Year%22%7D%2C%7B%22text%22%3A%226M%22%2C%22resolution%22%3A%221M%22%2C%22description%22%3A%226%20Months%22%7D%2C%7B%22text%22%3A%221M%22%2C%22resolution%22%3A%221D%22%2C%22description%22%3A%221%20Month%22%7D%2C%7B%22text%22%3A%221W%22%2C%22resolution%22%3A%221D%22%2C%22description%22%3A%221%20Week%22%7D%2C%7B%22text%22%3A%221D%22%2C%22resolution%22%3A%221D%22%2C%22description%22%3A%221%20Day%22%7D%5D&amp;locale=en&amp;uid=tradingview_8a160&amp;clientId=qtrader&amp;userId=UFTTRDR051&amp;chartsStorageVer=1.0&amp;customCSS=%2Fstatic%2Fcss%2Ftrading_view_style.css&amp;debug=false&amp;timezone=Asia%2FAlmaty&amp;theme=dark"
+              data-widget-options="symbol=1JANATAMF.PUBLIC&amp;interval=1D&amp;toolbarbg=0c0c0c&amp;widgetbar=%7B%22details%22%3Afalse%2C%22watchlist%22%3Afalse%2C%22watchlist_settings%22%3A%7B%22default_symbols%22%3A%5B%5D%7D%7D&amp;timeFrames=%5B%7B%22text%22%3A%225Y%22%2C%22resolution%22%3A%221M%22%2C%22description%22%3A%225%20Years%22%7D%2C%7B%22text%22%3A%223Y%22%2C%22resolution%22%3A%221M%22%2C%22description%22%3A%223%20Years%22%7D%2C%7B%22text%22%3A%221Y%22%2C%22resolution%22%3A%221M%22%2C%22description%22%3A%221%20Year%22%7D%2C%7B%22text%22%3A%226M%22%2C%22resolution%22%3A%221M%22%2C%22description%22%3A%226%20Months%22%7D%2C%7B%22text%22%3A%221M%22%2C%22resolution%22%3A%221D%22%2C%22description%22%3A%221%20Month%22%7D%2C%7B%22text%22%3A%221W%22%2C%22resolution%22%3A%221D%22%2C%22description%22%3A%221%20Week%22%7D%2C%7B%22text%22%3A%221D%22%2C%22resolution%22%3A%221D%22%2C%22description%22%3A%221%20Day%22%7D%5D&amp;locale=en&amp;uid=tradingview_8a160&amp;clientId=qtrader&amp;userId=UFTTRDR051&amp;chartsStorageVer=1.0&amp;customCSS=%2Fstatic%2Fcss%2Ftrading_view_style.css&amp;debug=false&amp;timezone=Asia%2FAlmaty&amp;theme=dark"
+              title="Financial Chart"
+              frameborder="0"
+              allowtransparency="true"
+              scrolling="no"
+              allowfullscreen=""
+              style="display: block; width: 100%; height: 100%"
+            >
+            </iframe>
+          </div>
+        </div>
+        <div
+          class="tab-pane show active"
+          id="nav-tchart"
+          role="tabpanel"
+          aria-labelledby="nav-tchart-tab"
+        ></div>
+        <div
+          class="tab-pane"
+          id="nav-pro1"
+          role="tabpanel"
+          aria-labelledby="nav-pro-tab1"
+        ></div>
+      </div>
+      <div
+        class="tab-pane fade active show"
+        id="nav-news"
+        role="tabpanel"
+        aria-labelledby="nav-news-tab"
+      >
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["16/07/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on July 13, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.87 per unit on the basis of current market price and Tk. 11.17 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,861,514,582.00 on the basis of current market price and Tk. 3,238,784,624.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on July 13, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.87 per unit on the
+              basis of current market price and Tk. 11.17 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,861,514,582.00 on the basis of current market price and
+              Tk. 3,238,784,624.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;16/07/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["09/07/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on July 06, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.87 per unit on the basis of current market price and Tk. 11.17 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,861,499,357.00 on the basis of current market price and Tk. 3,238,861,470.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on July 06, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.87 per unit on the
+              basis of current market price and Tk. 11.17 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,861,499,357.00 on the basis of current market price and
+              Tk. 3,238,861,470.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;09/07/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["02/07/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on June 26, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.88 per unit on the basis of current market price and Tk. 11.18 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,865,631,953.00 on the basis of current market price and Tk. 3,241,060,665.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on June 26, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.88 per unit on the
+              basis of current market price and Tk. 11.18 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,865,631,953.00 on the basis of current market price and
+              Tk. 3,241,060,665.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;02/07/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["25/06/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on June 22, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.88 per unit on the basis of current market price and Tk. 11.18 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,865,651,037.00 on the basis of current market price and Tk. 3,241,384,703.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on June 22, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.88 per unit on the
+              basis of current market price and Tk. 11.18 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,865,651,037.00 on the basis of current market price and
+              Tk. 3,241,384,703.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;25/06/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["18/06/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on June 15, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.82 per unit on the basis of current market price and Tk. 11.13 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,847,823,233.00 on the basis of current market price and Tk. 3,227,967,669.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on June 15, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.82 per unit on the
+              basis of current market price and Tk. 11.13 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,847,823,233.00 on the basis of current market price and
+              Tk. 3,227,967,669.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;18/06/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["11/06/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on June 08, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.85 per unit on the basis of current market price and Tk. 11.12 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,856,192,947.00 on the basis of current market price and Tk. 3,225,352,452.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on June 08, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.85 per unit on the
+              basis of current market price and Tk. 11.12 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,856,192,947.00 on the basis of current market price and
+              Tk. 3,225,352,452.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;11/06/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["04/06/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on June 01, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.84 per unit on the basis of current market price and Tk. 11.13 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,852,481,781.00 on the basis of current market price and Tk. 3,226,083,849.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on June 01, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.84 per unit on the
+              basis of current market price and Tk. 11.13 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,852,481,781.00 on the basis of current market price and
+              Tk. 3,226,083,849.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;04/06/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["28/05/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on May 25, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.67 per unit on the basis of current market price and Tk. 10.94 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,803,057,543.00 on the basis of current market price and Tk. 3,171,654,151.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on May 25, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.67 per unit on the
+              basis of current market price and Tk. 10.94 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,803,057,543.00 on the basis of current market price and
+              Tk. 3,171,654,151.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;28/05/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["21/05/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on May 18, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.66 per unit on the basis of current market price and Tk. 10.94 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,799,933,630.00 on the basis of current market price and Tk. 3,172,379,248.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on May 18, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.66 per unit on the
+              basis of current market price and Tk. 10.94 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,799,933,630.00 on the basis of current market price and
+              Tk. 3,172,379,248.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;21/05/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["14/05/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on May 11, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.63 per unit on the basis of current market price and Tk. 10.94 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,791,962,823.00 on the basis of current market price and Tk. 3,172,943,525.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on May 11, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.63 per unit on the
+              basis of current market price and Tk. 10.94 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,791,962,823.00 on the basis of current market price and
+              Tk. 3,172,943,525.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;14/05/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["07/05/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on May 03, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.56 per unit on the basis of current market price and Tk. 10.88 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,770,451,084.00 on the basis of current market price and Tk. 3,154,637,055.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on May 03, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.56 per unit on the
+              basis of current market price and Tk. 10.88 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,770,451,084.00 on the basis of current market price and
+              Tk. 3,154,637,055.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;07/05/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["30/04/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on April 27, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.57 per unit on the basis of current market price and Tk. 10.88 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,773,138,432.00 on the basis of current market price and Tk. 3,155,480,731.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on April 27, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.57 per unit on the
+              basis of current market price and Tk. 10.88 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,773,138,432.00 on the basis of current market price and
+              Tk. 3,155,480,731.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;30/04/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["30/04/2023","1JANATAMF: Q3 Financials","financials","(Q3 Un-audited): EPU was Tk. (0.05) for January-March 2023 as against Tk. 0.01 for January-March 2022; EPU was Tk. (0.56) for July 2022-March 2023 as against Tk. 0.40 for July 2021-March 2022. NOCFPU was Tk. 0.04 for July 2022-March 2023 as against Tk. 0.88 for July 2021-March 2022. NAV per unit at market price was Tk. 9.54 as on March 31, 2023 and Tk. 10.80 as on June 30, 2022. NAV per unit at cost price was Tk. 10.89 as on March 31, 2023 and Tk. 11.64 as on June 30, 2022."]);'
+          >
+            <div class="list-color list-style">
+              (Q3 Un-audited): EPU was Tk. (0.05) for January-March 2023
+              as against Tk. 0.01 for January-March 2022; EPU was Tk.
+              (0.56) for July 2022-March 2023 as against Tk. 0.40 for
+              July 2021-March 2022. NOCFPU was Tk. 0.04 for July
+              2022-March 2023 as against Tk. 0.88 for July 2021-March
+              2022. NAV per unit at market price was Tk. 9.54 as on
+              March 31, 2023 and Tk. 10.80 as on June 30, 2022. NAV per
+              unit at cost price was Tk. 10.89 as on March 31, 2023 and
+              Tk. 11.64 as on June 30, 2022.
+            </div>
+            <div class="list-sub-item">
+              financials&nbsp;&nbsp;·&nbsp;&nbsp;30/04/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["24/04/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on April 18, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.55 per unit on the basis of current market price and Tk. 10.88 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,767,948,748.00 on the basis of current market price and Tk. 3,154,897,340.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on April 18, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.55 per unit on the
+              basis of current market price and Tk. 10.88 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,767,948,748.00 on the basis of current market price and
+              Tk. 3,154,897,340.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;24/04/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["18/04/2023","1JANATAMF: Trustee Meeting schedule under LR 16(1)","general","As per Regulation 16(1) of the Dhaka Stock Exchange (Listing) Regulations, 2015, the Trustee of Fund has informed that a meeting of the Trustee Committee will be held on April 27, 2023 at 4:15 PM to consider, among others, un-audited financial statements of the Fund for the Third Quarter (Q3) period ended March 31, 2023.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              As per Regulation 16(1) of the Dhaka Stock Exchange
+              (Listing) Regulations, 2015, the Trustee of Fund has
+              informed that a meeting of the Trustee Committee will be
+              held on April 27, 2023 at 4:15 PM to consider, among
+              others, un-audited financial statements of the Fund for
+              the Third Quarter (Q3) period ended March 31, 2023.
+            </div>
+            <div class="list-sub-item">
+              general&nbsp;&nbsp;·&nbsp;&nbsp;18/04/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["16/04/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on April 13, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.51 per unit on the basis of current market price and Tk. 10.85 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,757,425,400.00 on the basis of current market price and Tk. 3,145,957,255.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on April 13, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.51 per unit on the
+              basis of current market price and Tk. 10.85 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,757,425,400.00 on the basis of current market price and
+              Tk. 3,145,957,255.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;16/04/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["09/04/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on April 06, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.52 per unit on the basis of current market price and Tk. 10.85 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,759,857,089.00 on the basis of current market price and Tk. 3,146,711,612.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on April 06, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.52 per unit on the
+              basis of current market price and Tk. 10.85 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,759,857,089.00 on the basis of current market price and
+              Tk. 3,146,711,612.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;09/04/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["02/04/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on March 30, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.50 per unit on the basis of current market price and Tk. 10.86 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,755,544,265.00 on the basis of current market price and Tk. 3,147,413,707.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on March 30, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.50 per unit on the
+              basis of current market price and Tk. 10.86 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,755,544,265.00 on the basis of current market price and
+              Tk. 3,147,413,707.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;02/04/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["27/03/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on March 23, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.54 per unit on the basis of current market price and Tk. 10.86 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,766,629,960.00 on the basis of current market price and Tk. 3,148,155,962.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on March 23, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.54 per unit on the
+              basis of current market price and Tk. 10.86 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,766,629,960.00 on the basis of current market price and
+              Tk. 3,148,155,962.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;27/03/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["19/03/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on March 16, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.63 per unit on the basis of current market price and Tk. 10.90 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,792,904,003.00 on the basis of current market price and Tk. 3,160,355,649.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on March 16, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.63 per unit on the
+              basis of current market price and Tk. 10.90 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,792,904,003.00 on the basis of current market price and
+              Tk. 3,160,355,649.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;19/03/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["12/03/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on March 09, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.62 per unit on the basis of current market price and Tk. 10.89 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,788,059,065.00 on the basis of current market price and Tk. 3,157,286,011.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on March 09, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.62 per unit on the
+              basis of current market price and Tk. 10.89 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,788,059,065.00 on the basis of current market price and
+              Tk. 3,157,286,011.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;12/03/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["05/03/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on March 02, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.52 per unit on the basis of current market price and Tk. 10.88 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,759,626,011.00 on the basis of current market price and Tk. 3,154,216,373.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on March 02, 2023, the Fund has
+              reported Net Asset Value (NAV) of Tk. 9.52 per unit on the
+              basis of current market price and Tk. 10.88 per unit on
+              the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,759,626,011.00 on the basis of current market price and
+              Tk. 3,154,216,373.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;05/03/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["26/02/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on February 23, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.53 per unit on the basis of current market price and Tk. 10.87 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,762,890,245.00 on the basis of market price and Tk. 3,151,146,736.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on February 23, 2023, the Fund
+              has reported Net Asset Value (NAV) of Tk. 9.53 per unit on
+              the basis of current market price and Tk. 10.87 per unit
+              on the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,762,890,245.00 on the basis of market price and Tk.
+              3,151,146,736.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;26/02/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["19/02/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on February 16, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.60 per unit on the basis of current market price and Tk. 10.86 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,781,967,051.00 on the basis of market price and Tk. 3,148,077,098.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on February 16, 2023, the Fund
+              has reported Net Asset Value (NAV) of Tk. 9.60 per unit on
+              the basis of current market price and Tk. 10.86 per unit
+              on the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,781,967,051.00 on the basis of market price and Tk.
+              3,148,077,098.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;19/02/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["12/02/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on February 09, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.63 per unit on the basis of current market price and Tk. 10.86 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,791,976,152.00 on the basis of market price and Tk. 3,148,832,464.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on February 09, 2023, the Fund
+              has reported Net Asset Value (NAV) of Tk. 9.63 per unit on
+              the basis of current market price and Tk. 10.86 per unit
+              on the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,791,976,152.00 on the basis of market price and Tk.
+              3,148,832,464.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;12/02/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["05/02/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on February 02, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.63 per unit on the basis of current market price and Tk. 10.86 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,792,887,143.00 on the basis of market price and Tk. 3,149,669,001.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on February 02, 2023, the Fund
+              has reported Net Asset Value (NAV) of Tk. 9.63 per unit on
+              the basis of current market price and Tk. 10.86 per unit
+              on the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,792,887,143.00 on the basis of market price and Tk.
+              3,149,669,001.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;05/02/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["31/01/2023","1JANATAMF: Q2 Financials","financials","(Q2 Un-audited): EPU was Tk. (0.28) for October-December 2022 as against Tk. 0.19 for October-December 2021; EPU was Tk. (0.51) for July-December 2022 as against Tk. 0.39 for July-December 2021. NOCFPU was Tk. 0.02 for July-December 2022 as against Tk. 0.54 for July-December 2021. NAV per unit at Market Price was Tk. 9.59 as on December 31, 2022 and Tk. 10.80 as on June 30, 2022. NAV per unit at Cost Price was Tk. 10.86 as on December 31, 2022 and Tk. 11.64 as on June 30, 2022."]);'
+          >
+            <div class="list-color list-style">
+              (Q2 Un-audited): EPU was Tk. (0.28) for October-December
+              2022 as against Tk. 0.19 for October-December 2021; EPU
+              was Tk. (0.51) for July-December 2022 as against Tk. 0.39
+              for July-December 2021. NOCFPU was Tk. 0.02 for
+              July-December 2022 as against Tk. 0.54 for July-December
+              2021. NAV per unit at Market Price was Tk. 9.59 as on
+              December 31, 2022 and Tk. 10.80 as on June 30, 2022. NAV
+              per unit at Cost Price was Tk. 10.86 as on December 31,
+              2022 and Tk. 11.64 as on June 30, 2022.
+            </div>
+            <div class="list-sub-item">
+              financials&nbsp;&nbsp;·&nbsp;&nbsp;31/01/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["29/01/2023","1JANATAMF: Weekly NAV","nav","On the close of operation on January 26, 2023, the Fund has reported Net Asset Value (NAV) of Tk. 9.65 per unit on the basis of current market price and Tk. 10.87 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,798,807,190.00 on the basis of market price and Tk. 3,150,396,769.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on January 26, 2023, the Fund
+              has reported Net Asset Value (NAV) of Tk. 9.65 per unit on
+              the basis of current market price and Tk. 10.87 per unit
+              on the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,798,807,190.00 on the basis of market price and Tk.
+              3,150,396,769.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;29/01/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["25/01/2023","1JANATAMF: Trustee Meeting schedule under LR 16(1)","general","As per Regulation 16(1) of the Dhaka Stock Exchange (Listing) Regulations, 2015, the Trustee of Fund has informed that a meeting of the Trustee Committee will be held on January 30, 2023 at 3:00 PM to consider, among others, un-audited financial statements of the Fund for the Second Quarter (Q2) period ended December 31, 2022.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              As per Regulation 16(1) of the Dhaka Stock Exchange
+              (Listing) Regulations, 2015, the Trustee of Fund has
+              informed that a meeting of the Trustee Committee will be
+              held on January 30, 2023 at 3:00 PM to consider, among
+              others, un-audited financial statements of the Fund for
+              the Second Quarter (Q2) period ended December 31, 2022.
+            </div>
+            <div class="list-sub-item">
+              general&nbsp;&nbsp;·&nbsp;&nbsp;25/01/2023
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["23/10/2022","1JANATAMF: Weekly NAV","nav","On the close of operation on October 20, 2022, the Fund has reported Net Asset Value (NAV) of Tk. 9.80 per unit on the basis of current market price and Tk. 10.89 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,840,914,223.00 on the basis of market price and Tk. 3,158,641,239.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on October 20, 2022, the Fund
+              has reported Net Asset Value (NAV) of Tk. 9.80 per unit on
+              the basis of current market price and Tk. 10.89 per unit
+              on the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,840,914,223.00 on the basis of market price and Tk.
+              3,158,641,239.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;23/10/2022
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["20/10/2022","1JANATAMF:  Trustee Committee Meeting under LR 16(1)","general","As per Regulation 16(1) of the Dhaka Stock Exchange (Listing) Regulations, 2015, the Trustee of the Fund has informed that a meeting of the Trustee Committee will be held on October 25, 2022 at 2:30 PM to consider, among others, un-audited financial statements of the Fund for the First Quarter (Q1) period ended September 30, 2022.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              As per Regulation 16(1) of the Dhaka Stock Exchange
+              (Listing) Regulations, 2015, the Trustee of the Fund has
+              informed that a meeting of the Trustee Committee will be
+              held on October 25, 2022 at 2:30 PM to consider, among
+              others, un-audited financial statements of the Fund for
+              the First Quarter (Q1) period ended September 30, 2022.
+            </div>
+            <div class="list-sub-item">
+              general&nbsp;&nbsp;·&nbsp;&nbsp;20/10/2022
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["16/10/2022","1JANATAMF: Address Change of Fund Management Company","general","The Fund Manager of the Mutual Fund has informed that the Registered Office of  Bangladesh RACE Management PCL has been shifted to its new address at Sky View Henolux Center, Office No: C-1, 1st Floor, 3/1, Purana Paltan, Dhaka-1000."]);'
+          >
+            <div class="list-color list-style">
+              The Fund Manager of the Mutual Fund has informed that the
+              Registered Office of Bangladesh RACE Management PCL has
+              been shifted to its new address at Sky View Henolux
+              Center, Office No: C-1, 1st Floor, 3/1, Purana Paltan,
+              Dhaka-1000.
+            </div>
+            <div class="list-sub-item">
+              general&nbsp;&nbsp;·&nbsp;&nbsp;16/10/2022
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["16/10/2022","1JANATAMF: Weekly NAV","nav","On the close of operation on October 13, 2022, the Fund has reported Net Asset Value (NAV) of Tk. 9.81 per unit on the basis of current market price and Tk. 10.90 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,845,463,692.00 on the basis of market price and Tk. 3,159,264,209.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on October 13, 2022, the Fund
+              has reported Net Asset Value (NAV) of Tk. 9.81 per unit on
+              the basis of current market price and Tk. 10.90 per unit
+              on the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,845,463,692.00 on the basis of market price and Tk.
+              3,159,264,209.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;16/10/2022
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group">
+          <li
+            class="news-list list-align text-title"
+            onclick='openmodal_news_table(["25/09/2022","1JANATAMF: Weekly NAV","nav","On the close of operation on September 22, 2022, the Fund has reported Net Asset Value (NAV) of Tk. 9.94 per unit on the basis of current market price and Tk. 10.91 per unit on the basis of cost price against face value of Tk. 10.00 whereas total Net Assets of the Fund stood at Tk. 2,880,816,712.00 on the basis of market price and Tk. 3,162,865,267.00 on the basis of cost price after considering all assets and liabilities of the Fund.\r\n"]);'
+          >
+            <div class="list-color list-style">
+              On the close of operation on September 22, 2022, the Fund
+              has reported Net Asset Value (NAV) of Tk. 9.94 per unit on
+              the basis of current market price and Tk. 10.91 per unit
+              on the basis of cost price against face value of Tk. 10.00
+              whereas total Net Assets of the Fund stood at Tk.
+              2,880,816,712.00 on the basis of market price and Tk.
+              3,162,865,267.00 on the basis of cost price after
+              considering all assets and liabilities of the Fund.
+            </div>
+            <div class="list-sub-item">
+              nav&nbsp;&nbsp;·&nbsp;&nbsp;25/09/2022
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="nav-analysis"
+        role="tabpanel"
+        aria-labelledby="nav-analysis-tab"
+      >
+        <div class="row"></div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="nav-order-flow"
+        role="tabpanel"
+        aria-labelledby="nav-order-flow-tab"
+      ></div>
+      <div
+        class="tab-pane fade"
+        id="nav-company"
+        role="tabpanel"
+        aria-labelledby="nav-company-tab"
+      >
+        <nav>
+          <div
+            class="nav nav-mobile-stock-info-tabs row"
+            id="nav-tab-company"
+            role="tablist"
+          >
+            <a
+              class="col nav-mobile-stock-info-item nav-mobile-stock-info-link show active"
+              id="nav-financial-tab"
+              data-toggle="tab"
+              href="#nav-financial"
+              role="tab"
+              aria-controls="nav-financial"
+              aria-selected="false"
+              >Financial</a
+            >
+            <a
+              class="col nav-mobile-stock-info-item nav-mobile-stock-info-link"
+              id="nav-corp-actions-tab"
+              data-toggle="tab"
+              href="#nav-corp-actions"
+              role="tab"
+              aria-controls="nav-corp-actions"
+              aria-selected="false"
+              >Corp Actions</a
+            >
+            <a
+              class="col nav-mobile-stock-info-item nav-mobile-stock-info-link"
+              id="nav-profile-tab"
+              data-toggle="tab"
+              href="#nav-profile"
+              role="tab"
+              aria-controls="nav-profile"
+              aria-selected="false"
+              >Profile</a
+            >
+            <a
+              class="col nav-mobile-stock-info-item nav-mobile-stock-info-link"
+              id="nav-holdings-tab"
+              data-toggle="tab"
+              href="#nav-holdings"
+              role="tab"
+              aria-controls="nav-holdings"
+              aria-selected="false"
+              >Holdings</a
+            >
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent-company">
+          <div
+            class="tab-pane fade show active"
+            id="nav-financial"
+            role="tabpanel"
+            aria-labelledby="nav-financial-tab"
+          >
+            <div class="row">
+              <div class="col-12">
+                <ul
+                  class="nav nav-pills mb-3"
+                  id="pills-tab-financial-forecast"
+                  role="tablist"
+                >
+                  <li class="nav-mobile-stock-info-item-round col-3">
+                    <a
+                      class="nav-mobile-stock-info-link active fintab"
+                      id="pills-financial-forecast-eps-tab"
+                      data-toggle="pill"
+                      href="#pills-financial-forecast-eps"
+                      role="tab"
+                      aria-controls="pills-financial-forecast-eps"
+                      aria-selected="false"
+                      >EPS</a
+                    >
+                  </li>
+                  <li class="nav-mobile-stock-info-item-round col-3">
+                    <a
+                      class="nav-mobile-stock-info-link fintab"
+                      id="pills-financial-forecast-dividend-tab"
+                      data-toggle="pill"
+                      href="#pills-financial-forecast-dividend"
+                      role="tab"
+                      aria-controls="pills-financial-forecast-dividend"
+                      aria-selected="false"
+                      >Dividend</a
+                    >
+                  </li>
+                  <li class="nav-mobile-stock-info-item-round col-3">
+                    <a
+                      class="nav-mobile-stock-info-link fintab"
+                      id="pills-financial-forecast-roa-tab"
+                      data-toggle="pill"
+                      href="#pills-financial-forecast-eps"
+                      role="tab"
+                      aria-controls="pills-financial-forecast-eps"
+                      aria-selected="false"
+                      >ROA</a
+                    >
+                  </li>
+                  <li class="nav-mobile-stock-info-item-round col-3">
+                    <a
+                      class="nav-mobile-stock-info-link fintab"
+                      id="pills-financial-forecast-roe-tab"
+                      data-toggle="pill"
+                      href="#pills-financial-forecast-eps"
+                      role="tab"
+                      aria-controls="pills-financial-forecast-eps"
+                      aria-selected="true"
+                      >ROE</a
+                    >
+                  </li>
+                  <li class="nav-mobile-stock-info-item-round col-3">
+                    <a
+                      class="nav-mobile-stock-info-link fintab"
+                      id="pills-financial-forecast-net-margin-tab"
+                      data-toggle="pill"
+                      href="#pills-financial-forecast-eps"
+                      role="tab"
+                      aria-controls="pills-financial-forecast-eps"
+                      aria-selected="false"
+                      >Net Debt</a
+                    >
+                  </li>
+                  <li class="nav-mobile-stock-info-item-round col-3">
+                    <a
+                      class="nav-mobile-stock-info-link fintab"
+                      id="pills-financial-forecast-debt-to-asset-tab"
+                      data-toggle="pill"
+                      href="#pills-financial-forecast-eps"
+                      role="tab"
+                      aria-controls="pills-financial-forecast-eps"
+                      aria-selected="false"
+                      >Equity</a
+                    >
+                  </li>
+                  <li class="nav-mobile-stock-info-item-round col-3">
+                    <a
+                      class="nav-mobile-stock-info-link fintab"
+                      id="pills-financial-forecast-cfps-tab"
+                      data-toggle="pill"
+                      href="#pills-financial-forecast-eps"
+                      role="tab"
+                      aria-controls="pills-financial-forecast-eps"
+                      aria-selected="false"
+                      >CFPS</a
+                    >
+                  </li>
+                  <li
+                    class="nav-mobile-stock-info-item-round col-3"
+                    id="bvps-display"
+                  >
+                    <a
+                      class="nav-mobile-stock-info-link fintab"
+                      id="pills-financial-forecast-bvps-tab"
+                      data-toggle="pill"
+                      href="#pills-financial-forecast-eps"
+                      role="tab"
+                      aria-controls="pills-financial-forecast-eps"
+                      aria-selected="false"
+                      >BVPS</a
+                    >
+                  </li>
+                </ul>
+                <div
+                  class="tab-content"
+                  id="pills-tabContent-financial-forecast"
+                >
+                  <div
+                    class="tab-pane animate fade show active"
+                    id="pills-financial-forecast-eps"
+                    role="tabpanel"
+                    aria-labelledby="pills-financial-forecast-eps-tab"
+                  >
+                    <div class="tab-content">
+                      <div
+                        class="tab-pane fade show active"
+                        id="pills-financial-forecast-eps-quarterly"
+                        role="tabpanel"
+                        aria-labelledby="pills-financial-forecast-eps-quarterly-tab"
+                      >
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <div
+                              id="financial-quarter-eps"
+                              class="chart lazyload financial-quarter"
+                              data-expand="-20"
+                              style="
+                                width: 100vw;
+                                height: 400px;
+                                user-select: none;
+                                -webkit-tap-highlight-color: rgba(
+                                  0,
+                                  0,
+                                  0,
+                                  0
+                                );
+                              "
+                              _echarts_instance_="ec_1691084104433"
+                            >
+                              <div
+                                style="
+                                  position: relative;
+                                  width: 353px;
+                                  height: 400px;
+                                  padding: 0px;
+                                  margin: 0px;
+                                  border-width: 0px;
+                                "
+                              ></div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane animate fade show"
+                    id="pills-financial-forecast-dividend"
+                    role="tabpanel"
+                    aria-labelledby="pills-financial-forecast-dividend-tab"
+                  >
+                    <div
+                      class="tab-pane fade show"
+                      id="pills-financial-forecast-dividend-chart"
+                      role="tabpanel"
+                      aria-labelledby="pills-financial-forecast-dividend-chart-tab"
+                    >
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div
+                            id="financial-dividend-chart"
+                            data-expand="-20"
+                            style="
+                              width: 100vw;
+                              height: 400px;
+                              user-select: none;
+                              -webkit-tap-highlight-color: rgba(
+                                0,
+                                0,
+                                0,
+                                0
+                              );
+                            "
+                            _echarts_instance_="ec_1691084104434"
+                          >
+                            <div
+                              style="
+                                position: relative;
+                                width: 353px;
+                                height: 400px;
+                                padding: 0px;
+                                margin: 0px;
+                                border-width: 0px;
+                              "
+                            ></div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade show active"
+              id="pills-income-statement-data-chart"
+              role="tabpanel"
+              aria-labelledby="pills-income-statement-data-chart-tab"
+            >
+              <div class="row">
+                <div class="col-12">
+                  <div
+                    class="stock-info-financial-common-navbar"
+                    onclick="getIncomeTable()"
+                  >
+                    <span>Income Statement</span>
+                    <span
+                      ><i
+                        class="fa fa-chevron-right"
+                        aria-hidden="true"
+                      ></i
+                    ></span>
+                  </div>
+                  <ul
+                    class="nav nav-pills mb-3"
+                    id="pills-tab-income-statement"
+                    role="tablist"
+                  >
+                    <li class="nav-mobile-stock-info-item-round">
+                      <a
+                        class="nav-mobile-stock-info-link active fintab2"
+                        id="pills-income-statement-net-income-tab"
+                        data-toggle="pill"
+                        href="#pills-income-statement-net-income"
+                        role="tab"
+                        aria-controls="pills-income-statement-net-income"
+                        aria-selected="true"
+                        >Net Income</a
+                      >
+                    </li>
+                    <li class="nav-mobile-stock-info-item-round">
+                      <a
+                        class="nav-mobile-stock-info-link fintab2"
+                        id="pills-income-statement-revenue-tab"
+                        data-toggle="pill"
+                        href="#pills-income-statement-net-income"
+                        role="tab"
+                        aria-controls="pills-income-statement-net-income"
+                        aria-selected="false"
+                        >Revenue</a
+                      >
+                    </li>
+                    <li class="nav-mobile-stock-info-item-round">
+                      <a
+                        class="nav-mobile-stock-info-link fintab2"
+                        id="pills-income-statement-operating-income-tab"
+                        data-toggle="pill"
+                        href="#pills-income-statement-net-income"
+                        role="tab"
+                        aria-controls="pills-income-statement-net-income"
+                        aria-selected="false"
+                        >Operating Income</a
+                      >
+                    </li>
+                  </ul>
+                  <div
+                    class="tab-content"
+                    id="pills-tabContent-income-statement"
+                  >
+                    <div
+                      class="tab-pane animate fade show active"
+                      id="pills-income-statement-net-income"
+                      role="tabpanel"
+                      aria-labelledby="pills-income-statement-net-income-tab"
+                    >
+                      <div
+                        class="tab-content"
+                        id="pills-tabContent-income-statement-net-income"
+                      >
+                        <div
+                          class="tab-pane fade show active"
+                          id="pills-income-statement-net-income-quarterly"
+                          role="tabpanel"
+                          aria-labelledby="pills-income-statement-net-income-quarterly-tab"
+                        >
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <div
+                                id="net-income-quarter"
+                                class="chart lazyload income-quarter"
+                                data-expand="-20"
+                                style="
+                                  width: 100vw;
+                                  height: 400px;
+                                  user-select: none;
+                                  -webkit-tap-highlight-color: rgba(
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                  );
+                                "
+                                _echarts_instance_="ec_1691084104435"
+                              >
+                                <div
+                                  style="
+                                    position: relative;
+                                    width: 353px;
+                                    height: 400px;
+                                    padding: 0px;
+                                    margin: 0px;
+                                    border-width: 0px;
+                                  "
+                                ></div>
+                              </div>
+                            </div>
+                            <div class="col-lg-6"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade show active"
+              id="pills-balance-sheet-data-chart"
+              role="tabpanel"
+              aria-labelledby="pills-balance-sheet-data-chart-tab"
+            >
+              <div class="row">
+                <div class="col-12">
+                  <div
+                    class="stock-info-financial-common-navbar"
+                    onclick="getBalanceTable()"
+                  >
+                    <span>Balance Sheet</span>
+                    <span
+                      ><i
+                        class="fa fa-chevron-right"
+                        aria-hidden="true"
+                      ></i
+                    ></span>
+                  </div>
+                  <div class="tab-content" id="pills-tab-balance-sheet">
+                    <div
+                      class="tab-pane fade show active"
+                      id="pills-balance-sheet-quarterly"
+                      role="tabpanel"
+                      aria-labelledby="pills-balance-sheet-quarterly-tab"
+                    >
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div
+                            id="balance-sheet-quarter"
+                            class="chart lazyload"
+                            data-expand="-20"
+                            style="
+                              width: 100vw;
+                              height: 400px;
+                              user-select: none;
+                              -webkit-tap-highlight-color: rgba(
+                                0,
+                                0,
+                                0,
+                                0
+                              );
+                            "
+                            _echarts_instance_="ec_1691084104436"
+                          >
+                            <div
+                              style="
+                                position: relative;
+                                width: 353px;
+                                height: 400px;
+                                padding: 0px;
+                                margin: 0px;
+                                border-width: 0px;
+                              "
+                            ></div>
+                          </div>
+                        </div>
+                        <div class="col-lg-6"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane fade show active"
+              id="pills-cash-flow-data-chart"
+              role="tabpanel"
+              aria-labelledby="pills-cash-flow-data-chart-tab"
+            >
+              <div class="row">
+                <div class="col-12">
+                  <div
+                    class="stock-info-financial-common-navbar"
+                    onclick="getCashFlowTable()"
+                  >
+                    <span>Cash Flow</span>
+                    <span
+                      ><i
+                        class="fa fa-chevron-right"
+                        aria-hidden="true"
+                      ></i
+                    ></span>
+                  </div>
+                  <ul
+                    class="nav nav-pills mb-3"
+                    id="pills-tab-cash-flow"
+                    role="tablist"
+                  >
+                    <li class="nav-mobile-stock-info-item-round">
+                      <a
+                        class="nav-mobile-stock-info-link active fintab3"
+                        id="pills-cash-flow-operating-tab"
+                        data-toggle="pill"
+                        href="#pills-cash-flow-operating"
+                        role="tab"
+                        aria-controls="pills-cash-flow-operating"
+                        aria-selected="true"
+                        >Operating</a
+                      >
+                    </li>
+                    <li class="nav-mobile-stock-info-item-round">
+                      <a
+                        class="nav-mobile-stock-info-link fintab3"
+                        id="pills-cash-flow-investing-tab"
+                        data-toggle="pill"
+                        href="#pills-cash-flow-operating"
+                        role="tab"
+                        aria-controls="pills-cash-flow-investing"
+                        aria-selected="false"
+                        >Investing</a
+                      >
+                    </li>
+                    <li class="nav-mobile-stock-info-item-round">
+                      <a
+                        class="nav-mobile-stock-info-link fintab3"
+                        id="pills-cash-flow-financing-tab"
+                        data-toggle="pill"
+                        href="#pills-cash-flow-operating"
+                        role="tab"
+                        aria-controls="pills-cash-flow-financing"
+                        aria-selected="false"
+                        >Financing</a
+                      >
+                    </li>
+                  </ul>
+                  <div
+                    class="tab-content"
+                    id="pills-tabContent-cash-flow"
+                  >
+                    <div
+                      class="tab-pane animate fade show active"
+                      id="pills-cash-flow-operating"
+                      role="tabpanel"
+                      aria-labelledby="pills-cash-flow-operating-tab"
+                    >
+                      <div
+                        class="tab-content"
+                        id="pills-tabContent-cash-flow-operating"
+                      >
+                        <div
+                          class="tab-pane fade show active"
+                          id="pills-cash-flow-operating-quarterly"
+                          role="tabpanel"
+                          aria-labelledby="pills-cash-flow-operating-quarterly-tab"
+                        >
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <div
+                                id="cash-flow-operating-quarter"
+                                class="chart lazyload"
+                                data-expand="-20"
+                                style="
+                                  width: 100vw;
+                                  height: 400px;
+                                  user-select: none;
+                                  -webkit-tap-highlight-color: rgba(
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                  );
+                                "
+                                _echarts_instance_="ec_1691084104437"
+                              >
+                                <div
+                                  style="
+                                    position: relative;
+                                    width: 353px;
+                                    height: 400px;
+                                    padding: 0px;
+                                    margin: 0px;
+                                    border-width: 0px;
+                                  "
+                                ></div>
+                              </div>
+                            </div>
+                            <div class="col-lg-6"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p id="text-parent">Annual</p>
+            <p id="text-tab1">EPS</p>
+            <p id="text-tab2">Net Income</p>
+            <p id="text-tab3">Operating</p>
+            <footer class="stock-info-financial-footer">
+              <div
+                class="btn-group btn-group-toggle d-flex flex-row h-100"
+                data-toggle="buttons"
+              >
+                <label
+                  class="btn btn-outline-primary mobile-stock-btn-sm btn-block pt-1 p-0"
+                >
+                  <input
+                    type="radio"
+                    name="option-text"
+                    id="financial-quarterly-btn"
+                    autocomplete="off"
+                    checked=""
+                  />
+                  Quarterly
+                </label>
+                <label
+                  class="btn btn-outline-primary mobile-stock-btn-sm btn-block mt-0 pt-1 p-0 active"
+                >
+                  <input
+                    type="radio"
+                    name="option-text"
+                    id="financial-annual-btn"
+                    autocomplete="off"
+                  />
+                  Annual
+                </label>
+              </div>
+            </footer>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="nav-corp-actions"
+            role="tabpanel"
+            aria-labelledby="nav-corp-actions-tab"
+          >
+            <div class="row">
+              <div class="col-12">
+                <ul
+                  class="nav nav-pills mb-3"
+                  id="pills-tab-corp-actions"
+                  role="tablist"
+                >
+                  <li class="nav-mobile-stock-info-item-round">
+                    <a
+                      class="nav-mobile-stock-info-link active"
+                      id="pills-corp-actions-dividends-tab"
+                      data-toggle="pill"
+                      href="#pills-corp-actions-dividends"
+                      role="tab"
+                      aria-controls="pills-corp-actions-dividends"
+                      aria-selected="true"
+                      >Dividends</a
+                    >
+                  </li>
+                  <li class="nav-mobile-stock-info-item-round">
+                    <a
+                      class="nav-mobile-stock-info-link"
+                      id="pills-corp-actions-insider-activity-tab"
+                      data-toggle="pill"
+                      href="#pills-corp-actions-insider-activity"
+                      role="tab"
+                      aria-controls="pills-corp-actions-insider-activity"
+                      aria-selected="false"
+                      >Insider Activity</a
+                    >
+                  </li>
+                </ul>
+                <div
+                  class="tab-content"
+                  id="pills-tabContent-corp-actions"
+                >
+                  <div
+                    class="tab-pane fade show active"
+                    id="pills-corp-actions-dividends"
+                    role="tabpanel"
+                    aria-labelledby="pills-corp-actions-dividends-tab"
+                  >
+                    <div class="row">
+                      <div class="col-12">
+                        <table
+                          id="corp-actions-dividends-table"
+                          class="dividends-data-table table table-sm table-borderless"
+                        >
+                          <tr
+                            class="dividends-data-table-row data-table-head-bg thead-bg"
+                          >
+                            <td class="dividends-data-table-row-column">
+                              Declaration Date
+                            </td>
+                            <td class="dividends-data-table-row-column">
+                              Dividend
+                            </td>
+                            <td class="dividends-data-table-row-column">
+                              Record Date
+                            </td>
+                          </tr>
+                          <tr class="dividends-data-table-row">
+                            <td class="dividends-data-table-row-column">
+                              <span>August 16, 2022</span>
+                            </td>
+                            <td class="dividends-data-table-row-column">
+                              <span>7%C</span>
+                            </td>
+                            <td class="dividends-data-table-row-column">
+                              <span>June 9, 2022</span>
+                            </td>
+                          </tr>
+                          <tr class="dividends-data-table-row">
+                            <td class="dividends-data-table-row-column">
+                              <span>August 26, 2021</span>
+                            </td>
+                            <td class="dividends-data-table-row-column">
+                              <span>13%C</span>
+                            </td>
+                            <td class="dividends-data-table-row-column">
+                              <span>September 16, 2021</span>
+                            </td>
+                          </tr>
+                          <tr class="dividends-data-table-row">
+                            <td class="dividends-data-table-row-column">
+                              <span>August 12, 2020</span>
+                            </td>
+                            <td class="dividends-data-table-row-column">
+                              <span>-</span>
+                            </td>
+                            <td class="dividends-data-table-row-column">
+                              <span>June 9, 2020</span>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="pills-corp-actions-insider-activity"
+                    role="tabpanel"
+                    aria-labelledby="pills-corp-actions-insider-activity-tab"
+                  >
+                    <div class="row">
+                      <div class="col-12">
+                        <table
+                          id="corp-actions-insider-activity-table"
+                          class="insider-activity-data-table table table-sm table-borderless"
+                        ></table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="nav-profile"
+            role="tabpanel"
+            aria-labelledby="nav-profile-tab"
+          >
+            <div class="content">
+              <div class="ps ps--active-y jss2269">
+                <div>
+                  <div class="profile-item">
+                    <div class="profile-item-lable">Sector:</div>
+                    <div id="profile_sector" class="profile-item-text">
+                      MutFund
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="profile-item">
+                    <div class="profile-item-lable">Employee:</div>
+                    <div
+                      id="profile_employee"
+                      class="profile-item-text"
+                    >
+                      -
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="profile-item">
+                    <div class="profile-item-lable">
+                      Company Profile:
+                    </div>
+                    <div
+                      id="profile_company_profile"
+                      class="profile-item-text"
+                    >
+                      -
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="profile-item">
+                    <div class="profile-item-lable">Address:</div>
+                    <div id="profile_address" class="profile-item-text">
+                      Sky View Henolux Center, Office No: C-1, 1st
+                      Floor, 3/1, Purana Paltan, Dhaka-1000
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="profile-item">
+                    <div class="profile-item-lable">Contact:</div>
+                    <div id="profile_contact" class="profile-item-text">
+                      01302-399597, 01309-402782
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="profile-item">
+                    <div class="profile-item-lable">Fax:</div>
+                    <div id="profile_fax" class="profile-item-text">
+                      88 02 9513138
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="profile-item">
+                    <div class="profile-item-lable">Email:</div>
+                    <div id="profile_email" class="profile-item-text">
+                      info@racebd.com
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="profile-item">
+                    <div class="profile-item-lable">Web Address:</div>
+                    <div
+                      id="profile_web_address"
+                      class="profile-item-text"
+                    >
+                      http://www.racebd.com
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="profile-item">
+                    <div class="profile-item-lable">
+                      Company Secretary Name:
+                    </div>
+                    <div
+                      id="profile_company_secretary_name"
+                      class="profile-item-text"
+                    >
+                      -
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="profile-item">
+                    <div class="profile-item-lable">Cell No.:</div>
+                    <div
+                      id="profile_secretary_cell_no"
+                      class="profile-item-text"
+                    >
+                      -
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="profile-item">
+                    <div class="profile-item-lable">Telephone No.:</div>
+                    <div
+                      id="profile_secretary_telephone_no"
+                      class="profile-item-text"
+                    >
+                      -
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="profile-item">
+                    <div class="profile-item-lable">Email:</div>
+                    <div
+                      id="profile_secretary_email"
+                      class="profile-item-text"
+                    >
+                      -
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="nav-holdings"
+            role="tabpanel"
+            aria-labelledby="nav-holdings-tab"
+          >
+            <div class="row">
+              <div class="col-12 mt-2">
+                <div
+                  class="stock-info-financial-common-navbar"
+                  onclick="getHoldingTable()"
+                >
+                  <span>Holdings</span>
+                  <span
+                    ><i
+                      class="fa fa-chevron-right"
+                      aria-hidden="true"
+                    ></i
+                  ></span>
+                </div>
+                <div
+                  id="holdings-bar"
+                  style="
+                    width: 90vw;
+                    height: 700px;
+                    user-select: none;
+                    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                    position: relative;
+                  "
+                  _echarts_instance_="ec_1691084104432"
+                >
+                  <div
+                    style="
+                      position: relative;
+                      width: 318px;
+                      height: 700px;
+                      padding: 0px;
+                      margin: 0px;
+                      border-width: 0px;
+                    "
+                  >
+                    <canvas
+                      data-zr-dom-id="zr_0"
+                      width="954"
+                      height="2100"
+                      style="
+                        position: absolute;
+                        left: 0px;
+                        top: 0px;
+                        width: 318px;
+                        height: 700px;
+                        user-select: none;
+                        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                        padding: 0px;
+                        margin: 0px;
+                        border-width: 0px;
+                      "
+                    ></canvas>
+                  </div>
+                  <div class=""></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+    <section class="mobile-stock-info-col-pad">
+      <div
+        id="stock-info-income-statement-table-container"
+        class="row"
+        style="display: none"
+      >
+        <div class="col-12 mt-3">
+          <div
+            class="stock-info-financial-common-navbar"
+            onclick="backToFinancialChart()"
+          >
+            <span><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+            <span>Income Statement</span>
+          </div>
+          <div class="mt-3">
+            <div
+              align="center"
+              class="premium-stock-info-subscribe-btn-container"
+              id="mobile-income-premium-card"
+            >
+              <span>To see more data please</span>
+              <button class="premium-stock-info-subscribe-btn">
+                Subscribe
+                <i class="fa fa-angle-right ml-2 fa-2x" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div
+              class="balance-table"
+              id="scrolling-container-income-statement-quarter"
+              style="display: none"
+            >
+              <table
+                class="data-table-annual-quarterly"
+                id="scrolling-container-income-statement-quarterly-table"
+              ></table>
+            </div>
+            <div
+              class="balance-table"
+              id="scrolling-container-income-statement-annual"
+              style="display: block"
+            >
+              <table
+                class="data-table-annual-quarterly"
+                id="scrolling-container-income-statement-annual-table"
+              ></table>
+            </div>
+          </div>
+          <footer class="stock-info-financial-footer">
+            <div
+              class="btn-group btn-group-toggle d-flex flex-row h-100"
+              data-toggle="buttons"
+            >
+              <level
+                class="btn btn-outline-primary mobile-stock-btn-sm btn-block pt-1 p-0"
+              >
+                <input
+                  type="radio"
+                  name="options"
+                  id="incstatement-table-quarterly-btn"
+                  autocomplete="off"
+                  checked=""
+                  onchange="getIncStatementQuarterlyData()"
+                />
+                Quarterly
+              </level>
+              <level
+                class="btn btn-outline-primary mobile-stock-btn-sm btn-block mt-0 pt-1 p-0 active"
+              >
+                <input
+                  type="radio"
+                  name="options"
+                  id="incstatement-table-annual-btn"
+                  autocomplete="off"
+                  onchange="getIncStatementAnnualData()"
+                />
+                Annual
+              </level>
+            </div>
+          </footer>
+        </div>
+      </div>
+      <div
+        id="stock-info-balance-table-container"
+        class="row"
+        style="display: none"
+      >
+        <div class="col-12 mt-3">
+          <div
+            class="stock-info-financial-common-navbar"
+            onclick="backToFinancialChart()"
+          >
+            <span><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+            <span>Balance Sheet</span>
+          </div>
+          <div class="mt-3">
+            <div
+              align="center"
+              class="premium-stock-info-subscribe-btn-container"
+              id="mobile-balance-premium-card"
+            >
+              <span>To see more data please</span>
+              <button class="premium-stock-info-subscribe-btn">
+                Subscribe
+                <i class="fa fa-angle-right ml-2 fa-2x" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div
+              class="balance-table"
+              id="scrolling-container-balance-sheet-quarter"
+              style="display: none"
+            >
+              <table
+                class="data-table-annual-quarterly"
+                id="scrolling-container-balance-sheet-quarterly-table"
+              ></table>
+            </div>
+            <div
+              class="balance-table"
+              id="scrolling-container-balance-sheet-annual"
+              style="display: block"
+            >
+              <table
+                class="data-table-annual-quarterly"
+                id="scrolling-container-balance-sheet-annual-table"
+              ></table>
+            </div>
+          </div>
+          <footer class="stock-info-financial-footer">
+            <div
+              class="btn-group btn-group-toggle d-flex flex-row h-100"
+              data-toggle="buttons"
+            >
+              <button
+                class="btn btn-outline-primary mobile-stock-btn-sm btn-block"
+              >
+                <input
+                  type="radio"
+                  name="options"
+                  id="balance-table-quarterly-btn"
+                  autocomplete="off"
+                  checked=""
+                  onchange="getBalanceQuarterlyData()"
+                />
+                Quarterly
+              </button>
+              <button
+                class="btn btn-outline-primary mobile-stock-btn-sm btn-block mt-0 active"
+              >
+                <input
+                  type="radio"
+                  name="options"
+                  id="balance-table-annual-btn"
+                  autocomplete="off"
+                  onchange="getBalanceAnnualData()"
+                />
+                Annual
+              </button>
+            </div>
+          </footer>
+        </div>
+      </div>
+      <div
+        id="stock-info-cashflow-table-container"
+        class="row"
+        style="display: none"
+      >
+        <div class="col-12 mt-3">
+          <div
+            class="stock-info-financial-common-navbar"
+            onclick="backToFinancialChart()"
+          >
+            <span><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+            <span>CashFlow</span>
+          </div>
+          <div class="mt-3">
+            <div
+              align="center"
+              class="premium-stock-info-subscribe-btn-container"
+              id="mobile-cash-premium-card"
+            >
+              <span>To see more data please</span>
+              <button class="premium-stock-info-subscribe-btn">
+                Subscribe
+                <i class="fa fa-angle-right ml-2 fa-2x" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div
+              class="balance-table"
+              id="scrolling-container-cash-flow-quarter"
+              style="display: none"
+            >
+              <table
+                class="data-table-annual-quarterly"
+                id="scrolling-container-cash-flow-quarterly-table"
+              ></table>
+            </div>
+            <div
+              class="balance-table"
+              id="scrolling-container-cash-flow-annual"
+              style="display: block"
+            >
+              <table
+                class="data-table-annual-quarterly"
+                id="scrolling-container-cash-flow-annual-table"
+              ></table>
+            </div>
+          </div>
+          <footer class="stock-info-financial-footer">
+            <div
+              class="btn-group btn-group-toggle d-flex flex-row h-100"
+              data-toggle="buttons"
+            >
+              <button
+                class="btn btn-outline-primary mobile-stock-btn-sm btn-block"
+              >
+                <input
+                  type="radio"
+                  name="options"
+                  id="cash-flow-table-quarterly-btn"
+                  autocomplete="off"
+                  checked=""
+                  onchange="getCashFlowQuarterlyData()"
+                />
+                Quarterly
+              </button>
+              <button
+                class="btn btn-outline-primary mobile-stock-btn-sm btn-block mt-0 active"
+              >
+                <input
+                  type="radio"
+                  name="options"
+                  id="cash-flow-table-annual-btn"
+                  autocomplete="off"
+                  onchange="getCashFlowAnnualData()"
+                />
+                Annual
+              </button>
+            </div>
+          </footer>
+        </div>
+      </div>
+      <div
+        id="stock-info-holding-table-container"
+        class="row"
+        style="display: none"
+      >
+        <div class="col-12 mt-3">
+          <div
+            class="stock-info-financial-common-navbar"
+            onclick="backToFinancialChart()"
+          >
+            <span><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+            <span>Holdings</span>
+          </div>
+          <div class="mt-3">
+            <div
+              align="center"
+              class="premium-stock-info-subscribe-btn-container"
+              id="mobile-holding-premium-card"
+              style="display: block"
+            >
+              <span>To see more data please</span>
+              <button class="premium-stock-info-subscribe-btn">
+                Subscribe
+                <i class="fa fa-angle-right ml-2 fa-2x" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="holding-table-container">
+              <table class="data-table-annual-quarterly" id="holding-table">
+                <tr class="data-table-row data-table-head-bg">
+                  <th class="data-table-row-first">Share Holding Date</th>
+                  <th class="data-table-row-column long data-table-head-bg">
+                    May 31, 2023
+                  </th>
+                  <th class="data-table-row-column long data-table-head-bg">
+                    April 30, 2023
+                  </th>
+                  <th class="data-table-row-column long data-table-head-bg">
+                    March 31, 2023
+                  </th>
+                  <th class="data-table-row-column long data-table-head-bg">
+                    February 28, 2023
+                  </th>
+                  <th class="data-table-row-column long data-table-head-bg">
+                    January 31, 2023
+                  </th>
+                  <th class="data-table-row-column long data-table-head-bg">
+                    December 31, 2022
+                  </th>
+                  <th class="data-table-row-column long data-table-head-bg">
+                    November 30, 2022
+                  </th>
+                  <th class="data-table-row-column long data-table-head-bg">
+                    October 31, 2022
+                  </th>
+                  <th
+                    class="data-table-row-column long data-table-head-bg blur_data_table"
+                  >
+                    September 30, 2022
+                  </th>
+                  <th
+                    class="data-table-row-column long data-table-head-bg blur_data_table"
+                  >
+                    August 31, 2022
+                  </th>
+                  <th
+                    class="data-table-row-column long data-table-head-bg blur_data_table"
+                  >
+                    July 31, 2022
+                  </th>
+                  <th
+                    class="data-table-row-column long data-table-head-bg blur_data_table"
+                  >
+                    June 30, 2022
+                  </th>
+                  <th
+                    class="data-table-row-column long data-table-head-bg blur_data_table"
+                  >
+                    May 31, 2022
+                  </th>
+                  <th
+                    class="data-table-row-column long data-table-head-bg blur_data_table"
+                  >
+                    June 30, 2021
+                  </th>
+                </tr>
+                <tr class="data-table-row">
+                  <td class="data-table-row-first">Sponsor/Director</td>
+                  <td class="data-table-row-column long">25</td>
+                  <td class="data-table-row-column long">25</td>
+                  <td class="data-table-row-column long">25</td>
+                  <td class="data-table-row-column long">25</td>
+                  <td class="data-table-row-column long">25</td>
+                  <td class="data-table-row-column long">25</td>
+                  <td class="data-table-row-column long">25</td>
+                  <td class="data-table-row-column long">25</td>
+                  <td class="data-table-row-column long blur_data_table">25</td>
+                  <td class="data-table-row-column long blur_data_table">25</td>
+                  <td class="data-table-row-column long blur_data_table">25</td>
+                  <td class="data-table-row-column long blur_data_table">25</td>
+                  <td class="data-table-row-column long blur_data_table">25</td>
+                  <td class="data-table-row-column long blur_data_table">25</td>
+                </tr>
+                <tr class="data-table-row">
+                  <td class="data-table-row-first">Govt</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long blur_data_table">0</td>
+                  <td class="data-table-row-column long blur_data_table">0</td>
+                  <td class="data-table-row-column long blur_data_table">0</td>
+                  <td class="data-table-row-column long blur_data_table">0</td>
+                  <td class="data-table-row-column long blur_data_table">0</td>
+                  <td class="data-table-row-column long blur_data_table">0</td>
+                </tr>
+                <tr class="data-table-row">
+                  <td class="data-table-row-first">Institute</td>
+                  <td class="data-table-row-column long">34.94</td>
+                  <td class="data-table-row-column long">34.97</td>
+                  <td class="data-table-row-column long">34.86</td>
+                  <td class="data-table-row-column long">34.86</td>
+                  <td class="data-table-row-column long">34.86</td>
+                  <td class="data-table-row-column long">34.87</td>
+                  <td class="data-table-row-column long">34.87</td>
+                  <td class="data-table-row-column long">34.87</td>
+                  <td class="data-table-row-column long blur_data_table">
+                    34.88
+                  </td>
+                  <td class="data-table-row-column long blur_data_table">
+                    35.15
+                  </td>
+                  <td class="data-table-row-column long blur_data_table">
+                    34.33
+                  </td>
+                  <td class="data-table-row-column long blur_data_table">
+                    34.5
+                  </td>
+                  <td class="data-table-row-column long blur_data_table">
+                    34.37
+                  </td>
+                  <td class="data-table-row-column long blur_data_table">
+                    48.94
+                  </td>
+                </tr>
+                <tr class="data-table-row">
+                  <td class="data-table-row-first">Foreign</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long">0</td>
+                  <td class="data-table-row-column long blur_data_table">0</td>
+                  <td class="data-table-row-column long blur_data_table">0</td>
+                  <td class="data-table-row-column long blur_data_table">0</td>
+                  <td class="data-table-row-column long blur_data_table">0</td>
+                  <td class="data-table-row-column long blur_data_table">0</td>
+                  <td class="data-table-row-column long blur_data_table">0</td>
+                </tr>
+                <tr class="data-table-row">
+                  <td class="data-table-row-first">Public</td>
+                  <td class="data-table-row-column long">40.06</td>
+                  <td class="data-table-row-column long">40.03</td>
+                  <td class="data-table-row-column long">40.14</td>
+                  <td class="data-table-row-column long">40.14</td>
+                  <td class="data-table-row-column long">40.14</td>
+                  <td class="data-table-row-column long">40.13</td>
+                  <td class="data-table-row-column long">40.13</td>
+                  <td class="data-table-row-column long">40.13</td>
+                  <td class="data-table-row-column long blur_data_table">
+                    40.12
+                  </td>
+                  <td class="data-table-row-column long blur_data_table">
+                    39.85
+                  </td>
+                  <td class="data-table-row-column long blur_data_table">
+                    40.67
+                  </td>
+                  <td class="data-table-row-column long blur_data_table">
+                    40.5
+                  </td>
+                  <td class="data-table-row-column long blur_data_table">
+                    40.63
+                  </td>
+                  <td class="data-table-row-column long blur_data_table">
+                    26.06
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="mobile-stock-info-col-pad">
+      <div
+        class="modal fade mobile-stock-insider-modal"
+        id="insider-modal-table"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content mobile-stock-insider-modal-content">
+            <div class="modal-header">
+              <div>
+                <h6></h6>
+                <p class="modal-title" id="exampleModalLongTitle"></p>
+              </div>
+              <button type="button" class="close insider-modal-close-btn">
+                <span>×</span>
+              </button>
+            </div>
+            <div class="modal-body"><div class="news-modal-body"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div
+      class="modal fade"
+      id="watchlist-remove-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content mobile-stock-insider-modal-content">
+          <div class="modal-header pl-4">
+            <h6 class="modal-title" id="myModalLabelRemove"></h6>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul id="all_added_watchlists" class="pl-5"></ul>
+          </div>
+          <div class="modal-remove-footer">
+            <div
+              align="center"
+              id="select-all-watchlist"
+              class="d-flex justify-content-center align-items-center"
+            >
+              <span
+                ><input type="checkbox" id="checkall" class="select-checkbox"
+              /></span>
+              <span class="pl-2 font-weight-bold"> Select All</span>
+            </div>
+            <div
+              align="center"
+              class="d-flex justify-content-center align-items-center"
+              style="
+                border-left-color: var(--border-left-gc-color);
+                border-left-style: solid;
+                border-left-width: 0.2px;
+              "
+            >
+              <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+              <span id="remove-from-watchlist" class="pl-2 font-weight-bold"
+                >Delete</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="watchlist-add-modal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content mobile-stock-insider-modal-content">
+          <div class="modal-header pl-4">
+            <h6 class="modal-add-title" id="myModalLabelAdd"></h6>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul id="view_all_watchlists" class="pl-5"></ul>
+          </div>
+          <div class="modal-add-footer">
+            <div
+              align="center"
+              id="select-all-watchlist-add"
+              class="d-flex justify-content-center align-items-center"
+            >
+              <span
+                ><input
+                  type="checkbox"
+                  id="checkalladd"
+                  class="select-checkbox"
+              /></span>
+              <span class="pl-2 font-weight-bold"> Select All</span>
+            </div>
+            <div
+              align="center"
+              class="d-flex justify-content-center align-items-center"
+              style="
+                border-left-color: var(--border-left-gc-color);
+                border-left-style: solid;
+                border-left-width: 0.2px;
+              "
+            >
+              <span><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+              <span id="add-to-watchlist" class="pl-2 font-weight-bold"
+                >Add</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade modal-stock"
+      style="height: 108px"
+      id="mobile-stock-globalModal"
+      data-backdrop="static"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content modal-content-stock">
+          <div class="modal-content mobile-stock-global-search-container">
+            <div class="modal-body">
+              <div class="mobile-stock-global-search-icon-container">
+                <div class="mobile-stock-global-input-icons">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                  <input
+                    class="mobile-stock-global-input-field"
+                    type="text"
+                    placeholder="Search"
+                  />
+                </div>
+                <div class="mobile-stock-global-xmark-icon">
+                  <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   <div class="search-parent">
+    <div class="search-container" id="search-container"> 
+      <i class="fa fa-search fa-2x mobile-global-search-box" aria-hidden="true"></i>
+    </div>
+   </div>
+   
+   <script>
+    // Get the elements to attach listeners, 
+// to get info and to update positions:
+var container = document.querySelector('.search-parent');
+var circle = document.querySelector('.search-container');
+
+// "distX", "distY" will help us to know the distance
+// between the last position and the new, 
+// to keep the space between the click and the element, 
+// and of course, to move the element smooth
+var state = { distX: 0, distY: 0 };
+
+// These functions are declared outside of the elements
+// because they are going to be reused in two different
+// kind of events device: touch/mouse
+function onDown(e) {
+// Stop bubbling, this is important to avoid 
+// unexpected behaviours on mobile browsers:
+e.preventDefault();
+
+// Get the correct event source regardless the device:
+// Btw, "e.changedTouches[0]" in this case for simplicity 
+// sake we'll use only the first touch event
+// because we won't move more elements.
+var evt = e.type === 'touchstart' ? e.changedTouches[0] : e;
+
+// "Get the distance of the x/y", formula:
+// A: Get current position x/y of the circle. 
+// Example: circle.offsetLeft
+// B: Get the new position x/y. 
+// Example: evt.clientX
+// That's all.
+state.distX = Math.abs(circle.offsetLeft - evt.clientX);
+state.distY = Math.abs(circle.offsetTop - evt.clientY);
+
+// Disable pointer events in the circle to avoid
+// a bug whenever it's moving.
+circle.style.pointerEvents = 'none';
+};
+function onUp(e) {
+// Re-enable the "pointerEvents" in the circle element.
+// If this is not enabled, then the element won't move.
+circle.style.pointerEvents = 'initial';
+};
+function onMove(e) {
+// Update the position x/y of the circle element
+// only if the "pointerEvents" are disabled, 
+// (check the "onDown" function for more details.)
+if (circle.style.pointerEvents === 'none') {
+
+// Get the correct event source regardless the device:
+// Btw, "e.changedTouches[0]" in this case for simplicity 
+// sake we'll use only the first touch event
+// because we won't move more elements.
+var evt = e.type === 'touchmove' ? e.changedTouches[0] : e;
+
+// Update top/left directly in the dom element:
+circle.style.left = `${evt.clientX - state.distX}px`;
+circle.style.top = `${evt.clientY - state.distY}px`;
+};
+};
+
+// FOR MOUSE DEVICES:
+circle.addEventListener('mousedown', onDown);
+container.addEventListener('mousemove', onMove);
+container.addEventListener('mouseup', onUp);
+
+// FOR TOUCH DEVICES:
+circle.addEventListener('touchstart', onDown);
+container.addEventListener('touchmove', onMove);
+container.addEventListener('touchend', onUp);
+  </script>
+
+
+    <!-- <script type="text/javascript" src="/static/js/newsticker.js"></script> -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/mobile-js/mobile_data_load.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/mobile-js/mobile_stock_info.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/mobile-js/mobile-data-charts.js"
+    ></script>
+    <script type="text/javascript" src="/mobile-js/mobile_base.js"></script>
+    <script
+      type="text/javascript"
+      src="/mobile-js/mobile_lazysizes.min.js"
+    ></script>
+    <script type="text/javascript" src="/mobile-js/mobile_quote.js"></script>
+
+    <script
+      type="text/javascript"
+      src="/mobile-js/mobile-watchlist.js"
+    ></script>
+  </body>
+</html>

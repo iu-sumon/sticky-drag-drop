@@ -1,0 +1,285 @@
+/* BID and ASK Data table style Start */
+.mobile-modify-bidAndask-table-parent {
+    height: fit-content;
+  }
+  .mobile-modify-bidAndask-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  .mobile-modify-bidAndask-table-parent .mobile-modify-bidAndask-thead th {
+    background-color: var(--timeAndsales-thead-bg);
+    position: sticky;
+    top: 0;
+  }
+  .mobile-modify-bid-sl-name {
+    font-size: 10px;
+    white-space: nowrap;
+    padding:6px;
+    width: 20px;
+  }
+  .mobile-modify-bid-sl-value {
+    font-size: 14px;
+    white-space: nowrap;
+    padding:6px;
+    width: 20px;
+  }
+  .mobile-modify-ask-sl-name {
+    font-size: 10px;
+    white-space: nowrap;
+    text-align: right;
+    padding:6px;
+    width: 20px;
+  }
+  .mobile-modify-ask-sl-value {
+    font-size: 14px;
+    white-space: nowrap;
+    text-align: right;
+    padding:6px;
+    width: 20px;
+  }
+  
+  .mobile-modify-bid-column-name {
+    font-size: 10px;
+    white-space: nowrap;
+    padding:6px;
+    text-align: right;
+  }
+  .mobile-modify-bid-column-value {
+    font-size: 14px;
+    white-space: nowrap;
+    padding:6px;
+    text-align: right;
+    color: var(--up-color);
+  }
+  .mobile-modify-bidQ-column-name {
+    font-size: 10px;
+    white-space: nowrap;
+    text-align: left;
+    padding:6px;
+  }
+  .mobile-modify-bidQ-column-value {
+    font-size: 14px;
+    white-space: nowrap;
+    text-align: left;
+    padding:6px;
+    color: var(--up-color);
+  }
+  .mobile-modify-ask-column-name {
+    font-size: 10px;
+    white-space: nowrap;
+    text-align: left;
+    padding:6px;
+  }
+  .mobile-modify-ask-column-value {
+    font-size: 14px;
+    white-space: nowrap;
+    text-align: left;
+    padding:6px;
+    color: var(--down-color);
+  }
+  .mobile-modify-askQ-column-name {
+    font-size: 10px;
+    white-space: nowrap;
+    text-align: right;
+    padding:6px;
+  }
+  .mobile-modify-askQ-column-value {
+    font-size: 14px;
+    white-space: nowrap;
+    text-align: right;
+    padding:6px;
+    color: var(--down-color);
+  }
+  
+  .mobile-modify-bidAndask-middle-column-name {
+    font-size: 14px;
+    white-space: nowrap;
+    text-align: center;
+    background: var(--bidAndask-middle-column-bg) !important;
+  }
+  .mobile-modify-bidAndask-middle-column-value {
+    white-space: nowrap;
+    text-align: center;
+    background: var(--bidAndask-middle-column-bg);
+    padding-top: 0px !important;
+    padding-left: 3px;
+  }
+  
+  .mobile-modify-bidAndask-tbody tr:nth-child(even) {
+    background-color: var(--bidAndask-tr-bg);
+  }
+  
+  /* #mobile-modify-bidAndask-data-table tr:not(:first-child) {
+    display: none;
+  } */
+  
+  .mobile-modify-bidAndask-row {
+    display: none;
+  }
+  
+  /* Market depth chart */
+  .mobile-modify-market-depth-section {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .mobile-modify-bidPerQ {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green-color-bg);
+  }
+  
+  .mobile-modify-askPerQ {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--red-color-bg);
+  }
+  
+  .mobile-modify-icon-up-down {
+    border: 1px solid #45b6fe;
+    padding: 4px 14px;
+    border-radius: 10px;
+    background-color: #1f92ff;
+    font-size: 12px;
+  }
+  .form-control::placeholder {
+    color: var(--font-color) !important;
+  }
+  
+  .form-controls::placeholder {
+    font-size: 0.8rem!important;
+  }
+  
+  #order-window .form-control {
+    background: var(--select-trade-bg);
+    border: 1px solid var(--mkt-depth-bg);
+    color: var(--font-color);
+    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+  
+  .form-bg {
+    background-color: transparent !important;
+    border: none !important;
+    width: 89px !important;
+  }
+  
+  .first-chlid {
+    background-color: var(--select-trade-bg);
+    border: 1px solid var(--mkt-depth-bg);
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 5px;
+  }
+  
+  .form-controls
+  {
+      background-color: transparent;
+      border: none;
+      width: 70px;
+      outline-style: none;
+      text-align: center;
+  }
+  
+  input{
+    line-height: 1.3;
+  }
+  
+  .mobile-order-value {
+    background-color: var(--page-color);
+    border: 1px solid var(--mkt-depth-bg);
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 5px;
+    height: 36px;
+    padding-top:0.5rem;
+  }
+  
+  #order-window .searchbox {
+    height: 25px;
+    background: var(--select-trade-bg);
+    border-radius: 8px;
+    outline-style: none;
+  }
+  .mobile-order-yield {
+    background-color: var(--select-trade-bg);
+    border: 1px solid var(--mkt-depth-bg);
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 5px;
+    height: 36px;
+    padding-top:0.5rem;
+  }
+  
+  .modify-blur {
+    /* background-color: var(--timeAndsales-thead-bg);
+    border: 1px solid var(--mkt-depth-bg);
+    color: var(--font-muted)!important; */
+    background: var(--select-trade-bg);
+    border-radius: 8px;
+    outline-style: none;
+    color: var(--font-muted);
+  }
+
+ #order-mobile-modify-form .enableinput {
+    background: var(--select-trade-bg);
+ }
+ #order-mobile-modify-form .form-control {
+     background: var(--select-trade-bg);
+     color: var(--font-color);
+     padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+     font-size: 1rem;
+     border-radius: 5px;
+     border: none !important;
+     text-align: center;
+ } 
+ #order-mobile-modify-form .form-control:focus {
+     background: var(--select-trade-bg);
+     color: var(--font-color); 
+     outline: none !important;
+ }
+ #order-mobile-modify-form .ord-win-border {
+      border: none;
+ }
+ #order-mobile-modify-form .order_mod_submit_btn {
+     color: #ffffff;
+     border-radius: 5px;
+     font-size: 0.9rem;
+     border: 0px;
+     padding: 5px;
+     height: 40px;
+ }
+ .container-price-change
+ {
+     background: var(--select-trade-bg);
+     color: var(--font-color);
+     border-radius: 5px;
+     border: none!important;
+     text-align: center;
+ }
+ .price-container
+ {
+     padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+ }
+ .changeper-container
+ {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     gap: 21px;
+     color: #ffff;
+     padding-top: 4px;
+     padding-bottom: 3px;
+     padding-left: 3px;
+     padding-right: 6px;
+     border-radius: 5px;
+ }
+ .order_high, .order_up{
+  color: var(--up-color);
+}
+
+.order_low, .order_down{
+  color: var(--down-color);
+}
