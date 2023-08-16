@@ -46,7 +46,7 @@
       }
       .search-container {
         position: sticky;
-         top: 5rem; 
+        top: 5rem;
         z-index: 9999;
         border-radius: 50%;
         width: 52px;
@@ -67,8 +67,7 @@
         color: black;
         overflow: hidden;
       }
-      #global-search-hide
-      {
+      #global-search-hide {
         position: sticky;
         top: 10rem;
         z-index: 9999;
@@ -3142,65 +3141,126 @@
         </div>
       </div>
     </div>
-   
 
     <script>
-  var container = document.querySelector(".search-parent");
-var circle = document.querySelector(".search-container");
-var state = { distX: 0, distY: 0 };
-var lastTouchTime = 0;
+      var container = document.querySelector(".search-parent");
+      var circle = document.querySelector(".search-container");
+      var state = { distX: 0, distY: 0 };
+      var touchThreshold = 10; // Adjust this threshold according to your needs
 
-// FOR TOUCH DEVICES:
-circle.addEventListener("touchstart", onDown);
-container.addEventListener("touchmove", onMove);
-container.addEventListener("touchend", onUp);
+      // FOR TOUCH DEVICES:
+      circle.addEventListener("touchstart", onTouchStart);
+      circle.addEventListener("mousedown", onMouseDown);
+      container.addEventListener("touchmove", onTouchMove);
+      container.addEventListener("mousemove", onMouseMove);
+      container.addEventListener("touchend", onTouchEnd);
+      container.addEventListener("mouseup", onMouseUp);
 
-function onDown(e) {
-  var currentTime = Date.now();
+      var isDragging = false;
+      var touchStarted = false;
 
-  if (currentTime - lastTouchTime < 300) {
-    openSearch();
-  }
-  lastTouchTime = currentTime;
-  e.preventDefault();
+      function onTouchStart(e) {
+        e.preventDefault();
+        var evt = e.changedTouches[0];
+        if (isInsideElement(evt.clientX, evt.clientY, circle)) {
+          state.distX = evt.clientX - circle.getBoundingClientRect().left;
+          state.distY = evt.clientY - circle.getBoundingClientRect().top;
+          isDragging = false;
+          touchStarted = true;
+          circle.style.pointerEvents = "none";
+        }
+      }
 
-  var evt = e.type === "touchstart" ? e.changedTouches[0] : e;
+      function onTouchMove(e) {
+        if (!isDragging && touchStarted) {
+          var evt = e.changedTouches[0];
+          var distMoved = Math.sqrt(
+            Math.pow(
+              evt.clientX - (circle.getBoundingClientRect().left + state.distX),
+              2
+            ) +
+              Math.pow(
+                evt.clientY -
+                  (circle.getBoundingClientRect().top + state.distY),
+                2
+              )
+          );
 
-  state.distX = evt.clientX - circle.getBoundingClientRect().left;
-  state.distY = evt.clientY - circle.getBoundingClientRect().top;
-  circle.style.pointerEvents = "none";
-}
+          if (distMoved > touchThreshold) {
+            isDragging = true;
+            touchStarted = false;
+            circle.style.pointerEvents = "initial";
+          }
+        }
 
-function onUp(e) {
-  circle.style.pointerEvents = "initial";
-}
+        if (isDragging) {
+          var evt = e.changedTouches[0];
+          updateElementPosition(evt.clientX, evt.clientY);
+        }
+      }
 
-function onMove(e) {
-  if (circle.style.pointerEvents === "none") {
-    var evt = e.type === "touchmove" ? e.changedTouches[0] : e;
-    var globalSticky = document.getElementById("global-search-hide");
+      function onTouchEnd(e) {
+        if (!isDragging && touchStarted) {
+          performTouchAction(); // Perform your touch-only action here
+          touchStarted = false;
+        }
+        isDragging = false;
+        circle.style.pointerEvents = "initial";
+      }
 
-    // Calculate the new positions within the mobile viewport bounds
-    var newX = Math.min(
-      Math.max(evt.clientX - state.distX, 0),
-      window.innerWidth - circle.offsetWidth
-    );
-    var newY = Math.min(
-      Math.max(evt.clientY - state.distY, 0),
-      window.innerHeight - circle.offsetHeight
-    );
+      function onMouseDown(e) {
+        e.preventDefault();
+        if (isInsideElement(e.clientX, e.clientY, circle)) {
+          state.distX = e.clientX - circle.getBoundingClientRect().left;
+          state.distY = e.clientY - circle.getBoundingClientRect().top;
+          isDragging = true;
+          touchStarted = false;
+        }
+      }
 
-    circle.style.left = `${newX}px`;
-    circle.style.top = `${newY}px`;
+      function onMouseMove(e) {
+        if (isDragging) {
+          updateElementPosition(e.clientX, e.clientY);
+        }
+      }
 
-    globalSticky.style.position = "sticky";
-    globalSticky.style.left = `${newX}px`;
-    globalSticky.style.top = `${newY}px`;
-    // globalSticky.style.zIndex = "9999"; //
-  }
-}
+      function onMouseUp(e) {
+        isDragging = false;
+      }
 
+      function updateElementPosition(clientX, clientY) {
+        var newX = Math.min(
+          Math.max(clientX - state.distX, 0),
+          window.innerWidth - circle.offsetWidth
+        );
+        var newY = Math.min(
+          Math.max(clientY - state.distY, 0),
+          window.innerHeight - circle.offsetHeight
+        );
 
+        circle.style.left = `${newX}px`;
+        circle.style.top = `${newY}px`;
+
+        // Update other related elements if needed
+        var globalSticky = document.getElementById("global-search-hide");
+        globalSticky.style.position = "sticky";
+        globalSticky.style.left = `${newX}px`;
+        globalSticky.style.top = `${newY}px`;
+        globalSticky.style.zIndex = "9999";
+      }
+
+      function performTouchAction() {
+        // Implement your touch-only action here
+        alert("Touch action performed!");
+        // console.log("Touch action performed!");
+      }
+
+      function isInsideElement(x, y, element) {
+        var rect = element.getBoundingClientRect();
+        return (
+          x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom
+        );
+      }
     </script>
 
     <!-- <script type="text/javascript" src="/static/js/newsticker.js"></script> -->
